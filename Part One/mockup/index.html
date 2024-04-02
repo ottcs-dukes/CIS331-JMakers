@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JMakers Application Mockup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+        }
+
+        .window {
+            /* box-shadow: 0px 4px 8px 4px #7f7f7f; */
+            margin: 24px;
+            display: inline-flex;
+            align-items: start;
+            flex-wrap: wrap;
+        }
+
+        .window>* {
+            width: 100%;
+        }
+
+        .window>header {
+            width: 100%;
+            background: #7f7f7f;
+            height: 24px;
+            line-height: 24px;
+            font-size: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .window>header::after {
+            display: block;
+            content: 'X';
+            width: 24px;
+            background: #f00;
+            position: relative;
+            left: calc(100% - 24px);
+            top: -24px;
+        }
+
+        .window>section {
+            border-style: solid;
+            border-color: #7f7f7f;
+            border-width: 0px 1px 1px 1px;
+            display: flex;
+            padding: 6px;
+            justify-content: space-around;
+            /* padding: 6px; */
+        }
+
+        .window>section>* {
+            width: 100%;
+            margin: 6px;
+        }
+
+        label {
+            display: block;
+        }
+
+        .micro {
+            /* margin: 6px; */
+            border-radius: 6px;
+            border: 1px solid #7f7f7f;
+            padding: 6px;
+        }
+
+        .micro>* {
+            margin: 6px;
+            width: calc(100% - 12px);
+        }
+
+        label {
+            padding: 6px;
+        }
+
+        textarea {
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="window">
+        <header>JMakers | Student Management System</header>
+        <section>
+            <div class="micro">
+                <strong>Create...</strong>
+                <button>Student</button>
+                <button>Faculty</button>
+                <button>Course</button>
+            </div>
+
+            <div class="micro">
+                <strong>Manage...</strong>
+                <button>Enrollment</button>
+                <button>Schedule</button>
+                <button>Check Student Enrollment</button>
+            </div>
+        </section>
+    </div>
+
+    <div class="window">
+        <header>Create New Student</header>
+        <section>
+            <div class="micro">
+                <strong>Core Information</strong>
+                <label>Social Security:<br><input type="text"></label>
+                <label>studentID:<br><input type="text"></label>
+                <label>Full Name:<br><input type="text"></label>
+                <label>Home Address:<br><input type="text"></label>
+                <label>Email Address:<br><input type="text"></label>
+                <label>GPA:<br><input type="text" id="fname"></label>
+            </div>
+
+            <div class="micro">
+                <strong>Emergency Contact</strong>
+                <label>Name:<br><input type="text" id="fname"></label>
+                <label>Phone:<br><input type="text" id="fname"></label>
+                <label>Address:<br><input type="text" id="fname"></label>
+            </div>
+        </section>
+    </div>
+
+    <div class="window">
+        <header>Create New Course</header>
+        <section>
+            <div class="micro">
+                <strong>Core Information</strong>
+                <label>Course Prefix:<br><input type="text"></label>
+                <label>Course Number:<br><input type="text"></label>
+                <label>Course Name:<br><input type="text"></label>
+            </div>
+
+            <div class="micro">
+                <strong>Scheduling Information</strong>
+                <label>Days of the Week: <select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </label>
+                <label>Credit Hours: <select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                </label>
+            </div>
+        </section>
+    </div>
+
+    <div class="window">
+        <header>Create New Faculty</header>
+        <section>
+            <div class="micro">
+                <strong>Core Information</strong>
+                <label>Full Name:<br><input type="text"></label>
+                <label>Email Address:<br><input type="text"></label>
+                <label>Building Name:<br><input type="text"></label>
+                <label>Office Number:<br><input type="text"></label>
+                <label>Phone Number:<br><input type="text"></label>
+            </div>
+
+            <div class="micro">
+                <strong>Department Information</strong>
+                <label>Department Name:<br><input type="text" id="fname"></label>
+                <label>Department Position:<br>
+                    <select name="cars" id="cars">
+                        <option>Adjunct</option>
+                        <option>Assistant Professor</option>
+                        <option>Associate Professor</option>
+                        <option>Professor</option>
+                        <option>Department Chair</option>
+                        <option>Visiting Professor</option>
+                    </select>
+                </label>
+            </div>
+        </section>
+    </div>
+
+    <div class="window">
+        <header>Schedule</header>
+        <section>
+            <div class="micro">
+                <strong>Course</strong>
+                <label>CourseID:<br><input type="text"></label>
+            </div>
+            <div class="micro">
+                <strong>Faculty</strong>
+                <label>FacultyID:<br><input type="text"></label>
+            </div>
+            <div class="micro">
+                <strong>Semester</strong>
+                <label>Select Semester:<br><select>
+                        <option>Summer 2024</option>
+                        <option>Fall 2024</option>
+                        <option>Spring 2025</option>
+                    </select></label>
+            </div>
+        </section>
+    </div>
+
+    <div class="window">
+        <header>Enroll a Student</header>
+        <section>
+            <div class="micro">
+                <strong>Course</strong>
+                <label>CourseID:<br><input type="text"></label>
+            </div>
+            <div class="micro">
+                <strong>Student</strong>
+                <label>StudentID:<br><input type="text"></label>
+            </div>
+        </section>
+    </div>
+
+    <div class="window">
+        <header>Check Student Enrollment</header>
+        <section>
+            <div class="micro">
+                <strong>Course</strong>
+                <label>CourseID:<br><input type="text"></label>
+                <label>Select Semester:<br><select>
+                        <option>Summer 2024</option>
+                        <option>Fall 2024</option>
+                        <option>Spring 2025</option>
+                    </select></label>
+            </div>
+            <textarea class="micro">
+Example:
+studentID - Last, First
+studentID - Last, First
+studentID - Last, First
+studentID - Last, First
+            </textarea>
+        </section>
+    </div>
+
+</body>
+
+</html>
