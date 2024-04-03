@@ -1,0 +1,153 @@
+{
+  "main": {
+    "id": "6405f4b98a5ecc31",
+    "type": "split",
+    "children": [
+      {
+        "id": "3cc2f9be0a2702d8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "299645ab99c5ffe4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "FSM.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "fc5708acadb638e5",
+    "type": "split",
+    "children": [
+      {
+        "id": "f9506a7b32984a04",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "38efc7b4da97e7df",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "d469bb588274e204",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "814f42860ce85792",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "f606fa2ee6ed76da",
+    "type": "split",
+    "children": [
+      {
+        "id": "4796814470ef68fc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a7a8e6c6c3171b9f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "FSM.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "c0c7afcaf5b1748f",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "FSM.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "5adc1cbefc000b20",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "9ad876a04d719027",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "FSM.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "299645ab99c5ffe4",
+  "lastOpenFiles": [
+    "FSM.md"
+  ]
+}
