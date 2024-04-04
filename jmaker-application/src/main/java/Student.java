@@ -66,11 +66,13 @@ public class Student {
         courses.add(course);
     }
 
-    public String getCourses() {
+    public String getCourses(Semester sem) {
         String str = "";
         for (int i = 0; i < courses.size(); i++) {
             Course c = courses.get(i);
-            str += c.getPrefix() + " " + c.getNumber() + "\n";
+            if (c.getSemester().equals(sem)) {
+                str += c.getPrefix() + " " + c.getNumber() + "\n";
+            }
         }
         return str;
     }
