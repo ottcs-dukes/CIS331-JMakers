@@ -36,8 +36,8 @@ public class Course {
 
     public void removeStudent(Student stu) {
         for (int i = 0; i < enrollment.length; i++) {
-            if (enrollement[i].equals(stu)) {
-                enrollement[i] = null;
+            if (enrollment[i].equals(stu)) {
+                enrollment[i] = null;
                 return;
             }
         }
