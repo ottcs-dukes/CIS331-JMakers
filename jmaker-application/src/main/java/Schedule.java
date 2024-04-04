@@ -29,9 +29,9 @@ public class Schedule {
     }
 
     public boolean equals(Schedule schedule) {
-        return this.semester.equals(schedule.getSemester() &&
+        return this.semester.equals(schedule.getSemester()) &&
             this.course.equals(schedule.getCourse()) && 
-            this.faculty.equals(schedule.getFaculty()));
+            this.faculty.equals(schedule.getFaculty());
     }
 
 }

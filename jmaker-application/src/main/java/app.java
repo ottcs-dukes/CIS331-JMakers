@@ -124,13 +124,22 @@ public class app {
                 promptStr("Start Time: "),
                 promptStr("End Time: "),
                 promptInt("Credit Hours: "),
-                null// Semester semester
+                requestSemester()
         ));
     }
 
     private static Course requestCourse() {
         for (int s = 0; s < courses.size(); s++) {
             System.out.println(s + ". " + courses.get(s).getName());
+        }
+        return courses.get(promptInt("Select a course: "));
+    }
+
+    private static Course requestCourse(Semester exclude) {
+        for (int s = 0; s < courses.size(); s++) {
+            if (exclude.equals(courses.get(s).getSemester())) {
+                System.out.println(s + ". " + courses.get(s).getName());
+            }
         }
         return courses.get(promptInt("Select a course: "));
     }
@@ -143,33 +152,44 @@ public class app {
                 promptStr("Start Time: "),
                 promptStr("End Time: "),
                 promptInt("Credit Hours: "),
-                null
+                requestSemester()
         );
     }
 
     // SEMESTERS
     private static ArrayList<Semester> semesters;
-    
+
     private static void createSemester() {
         semesters.add(new Semester(
                 promptStr("Enter semester season. (Winter, Spring, Summer, Fall): "),
                 promptInt("Enter semester year: ")
         ));
     }
-    
+
     private static Semester requestSemester() {
         for (int s = 0; s < semesters.size(); s++) {
             System.out.println(s + ". " + semesters.get(s).toString());
         }
         return semesters.get(promptInt("Select a semester: "));
     }
-    
+
     private static void editSemester() {
         Semester target = requestSemester();
         target.editSemester(
-            promptStr("Enter semester season. (Winter, Spring, Summer, Fall): "),
-            promptInt("Enter semester year: ")
+                promptStr("Enter semester season. (Winter, Spring, Summer, Fall): "),
+                promptInt("Enter semester year: ")
         );
+    }
+    
+    // SCHEDULES
+    private static ArrayList<Schedule> schedules;
+    
+    private static void createSchedule() {
+        schedules.add(new Schedule(
+                requestSemester(),
+                requestCourse(),
+                requestFaculty()
+        ));
     }
 
     // APP
@@ -181,6 +201,7 @@ public class app {
         faculty = new ArrayList<Faculty>();
         courses = new ArrayList<Course>();
         semesters = new ArrayList<Semester>();
+        schedules = new ArrayList<Schedule>();
 
         String[] menuName = {
             "Exit JMaker", // 0
@@ -263,14 +284,23 @@ public class app {
                         editCourse();
                         break;
                     case 15: // Assign Faculty to Course
+                        createSchedule();
                         break;
                     case 16: // Enroll Student in Course
+                        requestStudent().addCourse(requestCourse(requestSemester()));
                         break;
                     case 17: // Courses in a Semester
+                        Semester target = requestSemester();
+                        for (Course c : courses) {
+                            if (c.getSemester().equals(target)) {
+                                System.out.println(c.getPrefix() + " " + c.getNumber());
+                            }
+                        }
                         break;
                     case 18: // Courses taught by a Faculty Member
                         break;
                     case 19: // Courses a Student is Enrolled in
+                        System.out.println(requestStudent().getCourses());
                         break;
                     case 20: // Students Enrolled in a Course
                         break;
