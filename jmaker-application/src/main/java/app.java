@@ -180,16 +180,51 @@ public class app {
                 promptInt("Enter semester year: ")
         );
     }
-    
+
     // SCHEDULES
     private static ArrayList<Schedule> schedules;
-    
+
     private static void createSchedule() {
         schedules.add(new Schedule(
                 requestSemester(),
                 requestCourse(),
                 requestFaculty()
         ));
+    }
+
+    // LAST SIX FUNCTIONALITY
+    private static void coursesInSemester() {
+        Semester target = requestSemester();
+        for (Course c : courses) {
+            if (c.getSemester().equals(target)) {
+                System.out.println(c.getPrefix() + " " + c.getNumber());
+            }
+        }
+    }
+
+    private static void coursesByFaculty() {
+        Semester sTarget = requestSemester();
+        Faculty fTarget = requestFaculty();
+
+        for (Schedule s : schedules) {
+            if (s.getSemester().equals(sTarget) && s.getFaculty().equals(fTarget)) {
+                System.out.println(s.getCourse().getPrefix() + " " + s.getCourse().getNumber());
+            }
+        }
+    }
+
+    private static void studentSemesterCourses() {
+        System.out.println(requestStudent().getCourses(requestSemester()));
+    }
+    
+    private static void studentsInCourse() {
+        Semester semestertarget = requestSemester();
+        String targetPrefix = promptStr("What is the course prefix? ");
+        int targetNumber = promptInt("What is the course number? ");
+        for (Course c : courses) {
+            if (c.getNumber() == targetNumber && c.getPrefix().equals(targetPrefix))
+                c.printStudents(semestertarget);
+        }
     }
 
     // APP
@@ -290,19 +325,16 @@ public class app {
                         requestStudent().addCourse(requestCourse(requestSemester()));
                         break;
                     case 17: // Courses in a Semester
-                        Semester target = requestSemester();
-                        for (Course c : courses) {
-                            if (c.getSemester().equals(target)) {
-                                System.out.println(c.getPrefix() + " " + c.getNumber());
-                            }
-                        }
+                        coursesInSemester();
                         break;
                     case 18: // Courses taught by a Faculty Member
+                        coursesByFaculty();
                         break;
                     case 19: // Courses a Student is Enrolled in
-                        System.out.println(requestStudent().getCourses());
+                        studentSemesterCourses();
                         break;
                     case 20: // Students Enrolled in a Course
+                        studentsInCourse();
                         break;
                 }
 
