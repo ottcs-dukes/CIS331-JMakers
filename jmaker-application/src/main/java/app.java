@@ -25,7 +25,7 @@ public class app {
         in.nextLine();
         return response;
     }
-    
+
     private static long promptLng(String str) {
         System.out.print(str);
         long response = in.nextLong();
@@ -39,6 +39,7 @@ public class app {
         in.nextLine();
         return response;
     }
+
     private static String[] promptStrArr(String num, String per) {
         String[] response = new String[promptInt(num)];
         for (int i = 0; i < response.length; i++) {
@@ -79,6 +80,7 @@ public class app {
 
     // FACULTY
     private static ArrayList<Faculty> faculty;
+
     private static void createFaculty() {
         faculty.add(new Faculty(
                 promptStr("Faculty Name: "),
@@ -147,6 +149,28 @@ public class app {
 
     // SEMESTERS
     private static ArrayList<Semester> semesters;
+    
+    private static void createSemester() {
+        semesters.add(new Semester(
+                promptStr("Enter semester season. (Winter, Spring, Summer, Fall): "),
+                promptInt("Enter semester year: ")
+        ));
+    }
+    
+    private static Semester requestSemester() {
+        for (int s = 0; s < semesters.size(); s++) {
+            System.out.println(s + ". " + semesters.get(s).toString());
+        }
+        return semesters.get(promptInt("Select a semester: "));
+    }
+    
+    private static void editSemester() {
+        Semester target = requestSemester();
+        target.editSemester(
+            promptStr("Enter semester season. (Winter, Spring, Summer, Fall): "),
+            promptInt("Enter semester year: ")
+        );
+    }
 
     // APP
     public static void main(String[] args) {
@@ -165,25 +189,31 @@ public class app {
             "Manage Faculty", // 3
             "Manage Students", // 4
             "Manage Courses", // 5
-            "Create Semester", // 6
-            "Edit Semester", // 7
-            "Create Faculty", // 8
-            "Edit Faculty", // 9
-            "Create Student", // 10
-            "Edit Student", // 11
-            "Create Course", // 12
-            "Edit Course", // 13
-            "Assign Faculty to Course", // 14
-            "Enroll Student in Course", // 15
+            "Generate Reports", // 6
+            "Create Semester", // 7
+            "Edit Semester", // 8
+            "Create Faculty", // 9
+            "Edit Faculty", // 10
+            "Create Student", // 11
+            "Edit Student", // 12
+            "Create Course", // 13
+            "Edit Course", // 14
+            "Assign Faculty to Course", // 15
+            "Enroll Student in Course", // 16
+            "Courses in a Semester", // 17
+            "Courses taught by a Faculty Member", // 18
+            "Courses a Student is Enrolled in", // 19
+            "Students Enrolled in a Course" // 20
         };
 
         int[][] menuFSM = {
             {}, // Exit Program, placeholder
-            {0, 2, 3, 4, 5}, // Main Menu
-            {1, 6, 7}, // Manage Semesters
-            {1, 8, 9, 14}, // Manage Faculty
-            {1, 10, 11, 15}, // Manage Students
-            {1, 12, 13, 14, 15}, // Manage Courses
+            {0, 2, 3, 4, 6}, // Main Menu
+            {1, 7, 8}, // Manage Semesters
+            {1, 9, 10, 15}, // Manage Faculty
+            {1, 11, 12, 16}, // Manage Students
+            {1, 13, 14, 15, 16}, // Manage Courses
+            {1, 17, 18, 19, 20} // Generate Reports
         };
 
         int state = 1;
@@ -208,36 +238,41 @@ public class app {
 
                 // No options, just functionality to call
                 switch (state) {
-                    case 6: // Create Semester
-                        System.out.println("Enter semester season. (Winter, Spring, Summer, Fall)");
-                        String period = in.nextLine();
-                        System.out.println("Enter semester year.");
-                        int year = in.nextInt();
-                        Semester sem = new Semester(period, year);
+                    case 7: // Create Semester
+                        createSemester();
                         break;
-                    case 7: // Edit Semester
+                    case 8: // Edit Semester
+                        editSemester();
                         break;
-                    case 8: // Create Faculty
+                    case 9: // Create Faculty
                         createFaculty();
                         break;
-                    case 9: // Edit Faculty
+                    case 10: // Edit Faculty
                         editFaculty();
                         break;
-                    case 10: // Create Student
+                    case 11: // Create Student
                         createStudent();
                         break;
-                    case 11: // Edit Student
+                    case 12: // Edit Student
                         editStudent();
                         break;
-                    case 12: // Create Course
+                    case 13: // Create Course
                         createCourse();
                         break;
-                    case 13: // Edit Course
+                    case 14: // Edit Course
                         editCourse();
                         break;
-                    case 14: // Assign Faculty to Course
+                    case 15: // Assign Faculty to Course
                         break;
-                    case 15: // Enroll Student in Course
+                    case 16: // Enroll Student in Course
+                        break;
+                    case 17: // Courses in a Semester
+                        break;
+                    case 18: // Courses taught by a Faculty Member
+                        break;
+                    case 19: // Courses a Student is Enrolled in
+                        break;
+                    case 20: // Students Enrolled in a Course
                         break;
                 }
 
