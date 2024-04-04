@@ -99,4 +99,8 @@ public class Course {
         return "";
    }
 
+   public boolean equals(Course course) {
+        return this.prefix.equals(course.getPrefix()) && this.number == course.getNumber();
+   }
+
 }

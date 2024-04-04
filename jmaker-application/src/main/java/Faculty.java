@@ -59,6 +59,9 @@ public class Faculty {
      
         }
     
+    public boolean equals(Faculty fac) {
+        return this.name.equals(fac.getName());
+    }
 
 }
 
