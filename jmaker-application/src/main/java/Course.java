@@ -57,8 +57,11 @@ public class Course {
     public int getCreditHours(){
         return this.creditHours;
     }
-    public String[] getDays(){
-        return this.days;
+    public Student[] getEnrollment(){
+        return this.enrollment;
+    }
+    public Semester getSemester(){
+        return this.semester;
     }
     
     public void addStudent(Student stu) {
@@ -81,10 +84,5 @@ public class Course {
         System.out.println("No student found.");
     }
     
-    public void showStudents(Student stu) {
-        
-        for (int i = 0; i < Student)        
-        
-        
-    }
+   
 }
