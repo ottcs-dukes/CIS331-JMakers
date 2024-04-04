@@ -37,4 +37,9 @@ public int getStuID(){
     
 }
 
+@Override
+public boolean equals(Student stu) {
+    return this.fullName.equals(stu.fullName);
+}
+
 }
