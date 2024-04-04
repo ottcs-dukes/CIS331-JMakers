@@ -8,4 +8,17 @@ public class Semester {
         this.year = year;
     }
 
-}
+    
+    public String getPeriod(){
+        return this.period;
+    }
+    public int getYear(){
+        return this.year;
+    }
+    
+    public boolean equals(Semester sem){
+        return this.period.equals(sem.getPeriod()) && this.year==sem.getYear();
+    }
+    
+    
+    }
