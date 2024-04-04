@@ -5,13 +5,13 @@ public class Faculty {
     private String email;
     private String buildingName;
     private int officeNumber;
-    private int phoneNumber;
+    private long phoneNumber;
     private String department;
     private String position;
     private static int prevFacID = 99;
     
     public Faculty (String name, String email, String buildingName, 
-                        int officeNumber, int phoneNumber,
+                        int officeNumber, long phoneNumber,
                         String department, String position) {
     
         this.facultyID = getNewId();
@@ -26,7 +26,7 @@ public class Faculty {
     }
     
     public void editFaculty(String name, String email, String buildingName,
-                        int officeNumber, int phoneNumber, String department, String position) {
+                        int officeNumber, long phoneNumber, String department, String position) {
         
         this.name = name;
         this.email = email;
@@ -49,7 +49,7 @@ public class Faculty {
         return this.email;
     }
 
-    public int getPhone(){
+    public long getPhone(){
         return this.phoneNumber;
     }
 
