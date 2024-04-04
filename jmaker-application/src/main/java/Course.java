@@ -91,10 +91,12 @@ public class Course {
                 if (stu != null) {
                     str += stu.getFullName() + "\n";
                 }
+                return str;
             }
         } else {
             return "";
         }
+        return "";
    }
 
 }
