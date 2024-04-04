@@ -68,7 +68,7 @@ public class Student {
 
     public String getCourses() {
         String str = "";
-        courses.forEach((c) -> str += c.prefix + " " + c.number + "\n");
+        courses.forEach((c) -> str.concat(c.getPrefix() + " " + c.getNumber() + "\n"));
         return str;
     }
 
