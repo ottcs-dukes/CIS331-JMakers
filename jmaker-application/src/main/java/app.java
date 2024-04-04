@@ -66,6 +66,11 @@ public class app {
                 System.out.println("(We would actually call the specific \"" + menuName[state] + "\" function here, if we had one)");
                 switch (state) {
                     case 6: // Create Semester
+                        System.out.println("Enter semester season. (Winter, Spring, Summer, Fall)");
+                        String period = in.nextLine();
+                        System.out.println("Enter semester year.");
+                        int year = in.nextInt();
+                        Semester sem = new Semester(period, year);
                         break;
                     case 7: // Edit Semester
                         break;
