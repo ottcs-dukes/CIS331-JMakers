@@ -133,7 +133,8 @@ public class app {
                 promptStrArr("How many days per week is this course taught? ", "Which day? "),
                 promptStr("Start Time: "),
                 promptStr("End Time: "),
-                promptInt("Credit Hours: ")
+                promptInt("Credit Hours: "),
+                null
         );
     }
 
