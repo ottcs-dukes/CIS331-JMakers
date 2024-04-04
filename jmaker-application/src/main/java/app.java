@@ -25,6 +25,13 @@ public class app {
         in.nextLine();
         return response;
     }
+    
+    private static long promptLng(String str) {
+        System.out.print(str);
+        long response = in.nextLong();
+        in.nextLine();
+        return response;
+    }
 
     private static double promptDbl(String str) {
         System.out.print(str);
@@ -78,7 +85,7 @@ public class app {
                 promptStr("Faculty Email: "),
                 promptStr("Building Name: "),
                 promptInt("Office Number: "),
-                promptInt("Phone Number: "),
+                promptLng("Phone Number: "),
                 promptStr("Department: "),
                 promptStr("Position: ")
         ));
@@ -98,7 +105,7 @@ public class app {
                 promptStr("Faculty Email: "),
                 promptStr("Building Name: "),
                 promptInt("Office Number: "),
-                promptInt("Phone Number: "),
+                promptLng("Phone Number: "),
                 promptStr("Department: "),
                 promptStr("Position: ")
         );
