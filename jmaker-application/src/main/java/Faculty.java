@@ -25,12 +25,15 @@ public class Faculty {
     
     }
     
-    public void editFaculty(String email, 
-                        int officeNumber, int phoneNumber, String position) {
+    public void editFaculty(String name, String email, String buildingName,
+                        int officeNumber, int phoneNumber, String department, String position) {
         
+        this.name = name;
         this.email = email;
+        this.buildingName = buildingName;
         this.officeNumber = officeNumber;
         this.phoneNumber = phoneNumber;
+        this.department = department;
         this.position = position;
     
     }
@@ -39,6 +42,9 @@ public class Faculty {
         return this.facultyID;
     }
 
+    public String getName(){
+        return this.name;
+    }
     public String getEmail(){
         return this.email;
     }
