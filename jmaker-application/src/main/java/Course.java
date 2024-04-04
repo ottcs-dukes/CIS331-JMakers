@@ -84,5 +84,17 @@ public class Course {
         System.out.println("No student found.");
     }
     
-   
+   public String printStudents(Semester sem) {
+        if (this.semester.equals(sem)) {
+            String str = "";
+            for (Student stu : enrollment) {
+                if (stu != null) {
+                    str += stu.getFullName() + "\n";
+                }
+            }
+        } else {
+            return "";
+        }
+   }
+
 }
