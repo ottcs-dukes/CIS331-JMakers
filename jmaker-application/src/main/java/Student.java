@@ -1,9 +1,9 @@
 public class Student {
     
     private int studentID;
-    public String fullName;;
+    private String fullName;;
     private String Address;
-    public String email;
+    private String email;
     private double gpa;
     private int ssn; // did not include emergency contact for now
     public static int[] stuIDs;
@@ -18,7 +18,15 @@ public Student(int studentID, String fullName, String Address,
     this.ssn = ssn; // did not include the this.stuIDs
     
 }    
-    
+
+public void editStudent(String fullName, String Address, 
+              String email, double gpa){
+    this.fullName = fullName;
+    this.Address = Address;
+    this.email = email;
+    this.gpa = gpa;
+}
+
 public Double getGPA(){
     return this.gpa;
 }   
@@ -37,9 +45,11 @@ public int getStuID(){
     
 }
 
-@Override
+// Override
 public boolean equals(Student stu) {
     return this.fullName.equals(stu.fullName);
 }
+
+
 
 }
