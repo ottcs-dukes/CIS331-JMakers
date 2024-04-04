@@ -25,11 +25,9 @@ public class Course {
     }
 
     
-    public void editCourse(String prefix, int number, String name, String[] days, String startTime,
+    public void editCourse( String name, String[] days, String startTime,
         String endTime, int creditHours, Semester semester) {
 
-        this.prefix = prefix;
-        this.number = number;
         this.name = name;
         this.days = days;
         this.startTime = startTime;
@@ -38,6 +36,30 @@ public class Course {
         this.semester = semester;
     }
     
+    public String getPrefix(){
+        return this.prefix;
+    }
+    public int getNumber(){
+        return this.number;
+    }
+    public String getName(){
+        return this.name;
+    }
+    public String[] getDays(){
+        return this.days;
+    }
+    public String getStartTime(){
+        return this.startTime;
+    }
+    public String getEndTime(){
+        return this.endTime;
+    }
+    public int getCreditHours(){
+        return this.creditHours;
+    }
+    public String[] getDays(){
+        return this.days;
+    }
     
     public void addStudent(Student stu) {
         for (int i = 0; i < enrollment.length; i++) {
@@ -61,6 +83,7 @@ public class Course {
     
     public void showStudents(Student stu) {
         
+        for (int i = 0; i < Student)        
         
         
     }
