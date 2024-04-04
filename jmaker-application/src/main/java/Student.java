@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Student {
     
     private int studentID;
@@ -7,6 +9,7 @@ public class Student {
     private double gpa;
     private int ssn; // did not include emergency contact for now
     private static int prevStuID = 199;
+    private ArrayList<Course> courses = new ArrayList<>();
         
     public Student(String fullName, String Address, 
                 String email, double gpa, int ssn){
@@ -53,6 +56,16 @@ public class Student {
     private static int getNewID() {
         int newID = prevStuID++;
         return newID;
+    }
+
+    public void addCourse(Course course) {
+        courses.add(course);
+    }
+
+    public String getCourses() {
+        String str = "";
+        courses.forEach((c) -> str += c.prefix + " " + c.number + "\n");
+        return str;
     }
 
 }
