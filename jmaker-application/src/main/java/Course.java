@@ -1,14 +1,14 @@
 public class Course {
 
-    public String prefix;
-    public int number;
-    public String name;
-    public String[] days;
-    public String startTime;
-    public String endTime;
-    public int creditHours;
-    public Student[] enrollment;
-    public Semester semester;
+    private String prefix;
+    private int number;
+    private String name;
+    private String[] days;
+    private String startTime;
+    private String endTime;
+    private int creditHours;
+    private Student[] enrollment;
+    private Semester semester;
 
     public Course(String prefix, int number, String name, String[] days, String startTime,
         String endTime, int creditHours, Semester semester) {
@@ -24,6 +24,21 @@ public class Course {
         this.semester = semester;
     }
 
+    
+    public void editCourse(String prefix, int number, String name, String[] days, String startTime,
+        String endTime, int creditHours, Semester semester) {
+
+        this.prefix = prefix;
+        this.number = number;
+        this.name = name;
+        this.days = days;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.creditHours = creditHours;
+        this.semester = semester;
+    }
+    
+    
     public void addStudent(Student stu) {
         for (int i = 0; i < enrollment.length; i++) {
             if (enrollment[i] == null) {
@@ -43,5 +58,10 @@ public class Course {
         }
         System.out.println("No student found.");
     }
-
+    
+    public void showStudents(Student stu) {
+        
+        
+        
+    }
 }

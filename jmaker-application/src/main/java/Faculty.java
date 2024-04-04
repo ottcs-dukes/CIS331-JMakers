@@ -25,9 +25,10 @@ public class Faculty {
     
     }
     
-    public void editFaculty(String email, 
+    public void editFaculty(String name, String email, 
                         int officeNumber, int phoneNumber, String position) {
         
+        this.name = name;
         this.email = email;
         this.officeNumber = officeNumber;
         this.phoneNumber = phoneNumber;
