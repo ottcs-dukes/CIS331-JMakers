@@ -26,6 +26,10 @@ public class Student {
         this.email = email;
         this.gpa = gpa;
     }
+    
+    public String getFullName(){
+        return this.fullName;
+    }   
 
     public Double getGPA(){
         return this.gpa;
