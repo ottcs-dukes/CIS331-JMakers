@@ -48,6 +48,31 @@ public class app {
         return response;
     }
 
+    // SEMESTERS
+    private static ArrayList<Semester> semesters;
+
+    private static void createSemester() {
+        semesters.add(new Semester(
+                promptStr("Enter semester season. (Winter, Spring, Summer, Fall): "),
+                promptInt("Enter semester year: ")
+        ));
+    }
+
+    private static Semester requestSemester() {
+        for (int s = 0; s < semesters.size(); s++) {
+            System.out.println(s + ". " + semesters.get(s).toString());
+        }
+        return semesters.get(promptInt("Select a semester: "));
+    }
+
+    private static void editSemester() {
+        Semester target = requestSemester();
+        target.editSemester(
+                promptStr("Enter semester season. (Winter, Spring, Summer, Fall): "),
+                promptInt("Enter semester year: ")
+        );
+    }
+
     // STUDENT
     private static ArrayList<Student> students;
 
@@ -156,31 +181,6 @@ public class app {
         );
     }
 
-    // SEMESTERS
-    private static ArrayList<Semester> semesters;
-
-    private static void createSemester() {
-        semesters.add(new Semester(
-                promptStr("Enter semester season. (Winter, Spring, Summer, Fall): "),
-                promptInt("Enter semester year: ")
-        ));
-    }
-
-    private static Semester requestSemester() {
-        for (int s = 0; s < semesters.size(); s++) {
-            System.out.println(s + ". " + semesters.get(s).toString());
-        }
-        return semesters.get(promptInt("Select a semester: "));
-    }
-
-    private static void editSemester() {
-        Semester target = requestSemester();
-        target.editSemester(
-                promptStr("Enter semester season. (Winter, Spring, Summer, Fall): "),
-                promptInt("Enter semester year: ")
-        );
-    }
-
     // SCHEDULES
     private static ArrayList<Schedule> schedules;
 
@@ -216,14 +216,15 @@ public class app {
     private static void studentSemesterCourses() {
         System.out.println(requestStudent().getCourses(requestSemester()));
     }
-    
+
     private static void studentsInCourse() {
         Semester semestertarget = requestSemester();
         String targetPrefix = promptStr("What is the course prefix? ");
         int targetNumber = promptInt("What is the course number? ");
         for (Course c : courses) {
-            if (c.getNumber() == targetNumber && c.getPrefix().equals(targetPrefix))
+            if (c.getNumber() == targetNumber && c.getPrefix().equals(targetPrefix)) {
                 c.printStudents(semestertarget);
+            }
         }
     }
 
@@ -264,7 +265,7 @@ public class app {
 
         int[][] menuFSM = {
             {}, // Exit Program, placeholder
-            {0, 2, 3, 4, 6}, // Main Menu
+            {0, 2, 3, 4, 5, 6}, // Main Menu
             {1, 7, 8}, // Manage Semesters
             {1, 9, 10, 15}, // Manage Faculty
             {1, 11, 12, 16}, // Manage Students

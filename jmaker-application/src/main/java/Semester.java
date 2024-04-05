@@ -1,3 +1,4 @@
+
 public class Semester {
 
     private String period;
@@ -7,26 +8,26 @@ public class Semester {
         this.period = period;
         this.year = year;
     }
+
     public void editSemester(String period, int year) {
         this.period = period;
         this.year = year;
     }
 
-    
-    public String getPeriod(){
+    public String getPeriod() {
         return this.period;
     }
-    public int getYear(){
+
+    public int getYear() {
         return this.year;
     }
-    
-    public boolean equals(Semester sem){
-        return this.period.equals(sem.getPeriod()) && this.year==sem.getYear();
+
+    public boolean equals(Semester sem) {
+        return this.period.equals(sem.getPeriod()) && this.year == sem.getYear();
     }
-    
-    public String toString(){
+
+    public String toString() {
         return this.period + " " + this.year;
     }
-    
-    
-    }
+
+}
