@@ -87,11 +87,13 @@ public class Course {
    public String printStudents(Semester sem) {
         if (this.semester.equals(sem)) {
             String str = "";
-            for (Student stu : enrollment) {
-                if (stu != null) {
-                    str += stu.getFullName() + "\n";
+            if (enrollment != null) {
+                for (Student stu : enrollment) {
+                    if (stu != null) {
+                        str += stu.getFullName() + "\n";
+                    }
+                    return str;
                 }
-                return str;
             }
         } else {
             return "";
