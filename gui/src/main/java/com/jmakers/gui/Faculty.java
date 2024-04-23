@@ -1,3 +1,4 @@
+package com.jmakers.gui;
 public class Faculty {
     
     private int facultyID;

@@ -1,3 +1,4 @@
+package com.jmakers.gui;
 public class Course {
 
     private String prefix;

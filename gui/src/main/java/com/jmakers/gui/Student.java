@@ -1,3 +1,4 @@
+package com.jmakers.gui;
 import java.util.ArrayList;
 
 public class Student {

@@ -1,3 +1,4 @@
+package com.jmakers.gui;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,7 +10,7 @@ import java.util.Scanner;
  *
  * @author user
  */
-public class app {
+public class Terminal {
 
     // INPUT HANDLING AND PROMPTING
     private static Scanner in;
