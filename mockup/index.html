@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JMakers Application Mockup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+        }
+
+        .window {
+            /* box-shadow: 0px 4px 8px 4px #7f7f7f; */
+            margin: 24px;
+            display: inline-flex;
+            align-items: start;
+            flex-wrap: wrap;
+            border-style: solid;
+            border-color: #7f7f7f;
+            border-width: 0px 1px 1px 1px;
+            padding-bottom: 6px;
+        }
+
+        .window>* {
+            width: 100%;
+        }
+
+        .window>header {
+            width: 100%;
+            background: #7f7f7f;
+            height: 24px;
+            line-height: 24px;
+            font-size: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+
+        .window>header::after {
+            color: #fff;
+            font-weight: 600;
+            font-family: monospace;
+            display: block;
+            content: '🞩';
+            line-height: 24px;
+            width: 24px;
+            background: #f00;
+            position: relative;
+            left: calc(100% - 24px);
+            top: -24px;
+        }
+
+        .window>section {
+            display: flex;
+            padding: 0px 6px 6px 6px;
+            justify-content: space-around;
+            /* padding: 6px; */
+        }
+
+        .window>section>* {
+            width: 100%;
+            margin-left: 6px;
+            margin-right: 6px;
+            margin-top: 6px;
+        }
+
+        .window>button {
+            width: 100%;
+            margin: 6px 12px;
+        }
+
+        label {
+            display: block;
+        }
+
+        .micro {
+            /* margin: 6px; */
+            border-radius: 6px;
+            border: 1px solid #7f7f7f;
+            padding: 6px;
+        }
+
+        .micro>* {
+            margin: 6px;
+            width: calc(100% - 12px);
+        }
+
+        label {
+            padding: 6px;
+        }
+
+        textarea {
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="window">
+        <header>JMakers | Student Management System</header>
+        <section>
+            <div class="micro">
+                <strong>Create...</strong>
+                <button>Semester</button>
+                <button>Faculty</button>
+                <button>Student</button>
+                <button>Course</button>
+            </div>
+            <div class="micro">
+                <strong>Manage...</strong>
+                <button>Semester</button>
+                <button>Faculty</button>
+                <button>Student</button>
+                <button>Course</button>
+            </div>
+        </section>
+        <section>
+            <div class="micro">
+                <strong>Assign...</strong>
+                <button>Student to Course</button>
+                <button>Faculty to Course</button>
+            </div>
+        </section>
+        <section>
+            <div class="micro">
+                <strong>Generate Report</strong>
+                <button>Courses in a Semester</button>
+                <button>Courses Taught by a Faculty Member</button>
+                <button>Courses a Student is Enrolled In</button>
+                <button>Students Enrolled in a Course</button>
+            </div>
+            <textarea class="micro">Example Report:
+studentID - Last, First
+studentID - Last, First
+studentID - Last, First
+studentID - Last, First
+studentID - Last, First
+studentID - Last, First</textarea>
+        </section>
+    </div>
+
+    <div class="window">
+        <header>Create Semester</header>
+        <section>
+            <div class="micro">
+                    <strong>Semester</strong>
+                    <label>Select Semester:<br><select>
+                            <option>Summer 2024</option>
+                            <option>Fall 2024</option>
+                            <option>Spring 2025</option>
+                        </select></label>
+                        <label>Year:<br><input type="text" id="fname"></label>
+            </div>
+            <button>Go</button>
+        </section>
+    </div>
+</body>
+
+</html>
