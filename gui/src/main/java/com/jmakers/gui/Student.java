@@ -11,6 +11,18 @@ public class Student {
     private int ssn; // did not include emergency contact for now
     private static int prevStuID = 199;
     private ArrayList<Course> courses = new ArrayList<>();
+    
+    static void create(ArrayList<Student> destination) {
+    	// Create a window
+    	// On button click, append new Student() to destination
+    	System.out.println("Create Student");
+    }
+    
+    static void edit(Student target) {
+    	// Create a window with data fields filled
+    	// On button click, iterate through each field and set each
+    	System.out.println("Edit Student");
+    }
         
     public Student(String fullName, String Address, 
                 String email, double gpa, int ssn){
