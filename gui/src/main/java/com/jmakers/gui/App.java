@@ -3,11 +3,13 @@ package com.jmakers.gui;
 import java.util.ArrayList;
 
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-
+import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.stage.*;
+import javafx.collections.*;
 
 /**
  * JavaFX App
@@ -27,9 +29,16 @@ public class App extends Application {
         var javafxVersion = SystemInfo.javafxVersion();
         
         stage.setTitle("JMakers | Main Menu");
+        
+        GridPane primaryPane = new GridPane();
 
         var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        var scene = new Scene(new StackPane(label), 640, 480);
+        var scene = new Scene(primaryPane, 640, 480);
+        
+        Button createStudent = new Button("Create Student");
+        createStudent.setOnAction(e -> {Student.create(students);});
+        primaryPane.add(createStudent,0,0);
+        
         stage.setScene(scene);
         stage.show();
     }
