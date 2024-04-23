@@ -1,4 +1,7 @@
 package com.jmakers.gui;
+
+import java.util.ArrayList;
+
 public class Course {
 
     private String prefix;
@@ -10,6 +13,18 @@ public class Course {
     private int creditHours;
     private Student[] enrollment;
     private Semester semester;
+    
+    static void create(ArrayList<Course> courses) {
+    	// Create a window
+    	// On button click, append new Course() to courses
+    	System.out.println("Create Course");
+    }
+    
+    static void edit(Course course) {
+    	// Create a window with data fields filled
+    	// On button click, iterate through each field and set each
+    	System.out.println("Edit Course");
+    }
 
     public Course(String prefix, int number, String name, String[] days, String startTime,
         String endTime, int creditHours, Semester semester) {

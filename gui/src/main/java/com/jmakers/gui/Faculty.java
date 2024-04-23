@@ -1,4 +1,7 @@
 package com.jmakers.gui;
+
+import java.util.ArrayList;
+
 public class Faculty {
     
     private int facultyID;
@@ -10,6 +13,18 @@ public class Faculty {
     private String department;
     private String position;
     private static int prevFacID = 99;
+    
+    static void create(ArrayList<Faculty> faculty) {
+    	// Create a window
+    	// On button click, append new Faculty() to faculty
+    	System.out.println("Create Faculty");
+    }
+    
+    static void edit(Faculty faculty) {
+    	// Create a window with data fields filled
+    	// On button click, iterate through each field and set each
+    	System.out.println("Edit Faculty");
+    }
     
     public Faculty (String name, String email, String buildingName, 
                         int officeNumber, long phoneNumber,

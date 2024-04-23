@@ -12,9 +12,9 @@ public class Student {
     private static int prevStuID = 199;
     private ArrayList<Course> courses = new ArrayList<>();
     
-    static void create(ArrayList<Student> destination) {
+    static void create(ArrayList<Student> students) {
     	// Create a window
-    	// On button click, append new Student() to destination
+    	// On button click, append new Student() to students
     	System.out.println("Create Student");
     }
     
