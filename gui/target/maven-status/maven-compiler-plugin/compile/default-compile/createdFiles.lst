@@ -1,9 +1,0 @@
-com\jmakers\gui\Course.class
-com\jmakers\gui\Enrollment.class
-module-info.class
-com\jmakers\gui\App.class
-com\jmakers\gui\Faculty.class
-com\jmakers\gui\Schedule.class
-com\jmakers\gui\Semester.class
-com\jmakers\gui\Student.class
-com\jmakers\gui\SystemInfo.class

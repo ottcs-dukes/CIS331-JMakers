@@ -38,14 +38,46 @@ public class App extends Application {
         
         stage.setTitle("JMakers | Main Menu");
         
-        GridPane primaryPane = new GridPane();
-
-        var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        var scene = new Scene(primaryPane, 640, 480);
+        GridPane pane = new GridPane();
+        var scene = new Scene(pane, 640, 480);
         
-        Button createStudent = new Button("Create Student");
+        Label createLabel = new Label("Create...");
+        pane.add(createLabel,0,0);
+        
+        Button createSemester = new Button("Semester");
+        createSemester.setOnAction(e -> {Semester.create(semesters);});
+        pane.add(createSemester,0,1);
+        
+        Button createFaculty = new Button("Faculty");
+        createFaculty.setOnAction(e -> {Faculty.create(faculty);});
+        pane.add(createFaculty,0,2);
+        
+        Button createStudent = new Button("Student");
         createStudent.setOnAction(e -> {Student.create(students);});
-        primaryPane.add(createStudent,0,0);
+        pane.add(createStudent,0,3);
+        
+        Button createCourse = new Button("Course");
+        createCourse.setOnAction(e -> {Course.create(courses);});
+        pane.add(createCourse,0,4);
+        
+        Label editLabel = new Label("Edit...");
+        pane.add(editLabel,1,0);
+        
+        Button editSemester = new Button("Semester");
+        editSemester.setOnAction(e -> {Semester.edit(null);});
+        pane.add(editSemester,1,1);
+        
+        Button editFaculty = new Button("Faculty");
+        editFaculty.setOnAction(e -> {Faculty.edit(null);});
+        pane.add(editFaculty,1,2);
+        
+        Button editStudent = new Button("Student");
+        editStudent.setOnAction(e -> {Student.edit(null);});
+        pane.add(editStudent,1,3);
+        
+        Button editCourse = new Button("Course");
+        editCourse.setOnAction(e -> {Course.edit(null);});
+        pane.add(editCourse,1,4);
         
         stage.setScene(scene);
         stage.show();
