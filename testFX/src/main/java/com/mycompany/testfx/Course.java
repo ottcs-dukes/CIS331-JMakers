@@ -70,6 +70,21 @@ public class Course {
         
         grid.setAlignment(Pos.CENTER);
         
+       btnAdd.setOnAction(e -> {
+            String prefix = txtPrefix.getText();
+            int number = Integer.valueOf(txtNumber.getText());
+            String name = txtName.getText();
+            String[] days = txtDay.getText().split(",");
+            String start = txtStart.getText();
+            String end = txtEnd.getText();
+            int credit = Integer.valueOf(txtCredit.getText());
+            Semester semester = new Semester("spring", 2024);
+        
+            Course course = new Course(prefix, number, name, days, start, end, credit, semester);
+            courses.add(course);
+            stage.close();
+        });
+        
         
         
             Scene scene = new Scene (grid, 300, 300);

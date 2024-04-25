@@ -1,3 +1,6 @@
+// GUI Application
+// Cooper Ott, Ryan Curran, Ethan Fannon
+
 package com.mycompany.testfx;
 
 import java.util.ArrayList;
@@ -92,5 +95,5 @@ public class App extends Application {
         enrollments = new ArrayList<Enrollment>();
         launch();
     }
-
+    
 }
