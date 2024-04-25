@@ -103,7 +103,7 @@ public class Course {
         
     }
     
-    static void edit(Course course) {
+    static void edit(ArrayList<Course> courses) {
     	// Create a window with data fields filled
     	// On button click, iterate through each field and set each
     	System.out.println("Edit Course");

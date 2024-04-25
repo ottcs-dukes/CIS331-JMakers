@@ -88,7 +88,7 @@ public class Faculty {
         
     }
     
-    static void edit(Faculty faculty) {
+    static void edit(ArrayList<Faculty> faculty) {
     	// Create a window with data fields filled
     	// On button click, iterate through each field and set each
     	System.out.println("Edit Faculty");
