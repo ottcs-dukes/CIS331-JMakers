@@ -1,3 +1,6 @@
+// GUI Application
+// Cooper Ott, Ryan Curran, Ethan Fannon
+
 package com.mycompany.testfx;
 
 import java.util.ArrayList;
