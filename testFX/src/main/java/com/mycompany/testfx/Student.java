@@ -71,12 +71,52 @@ public class Student {
         
     }
     
-    static void edit(Student target) {
-    	// Create a window with data fields filled
-    	// On button click, iterate through each field and set each
-    	System.out.println("Edit Student");
-    }
+    static void edit(Student student) {
+    	// Create a window
+        Stage stage = new Stage();
         
+        stage.setTitle("Create Student");
+        
+        Label lblName = new Label("Full Name:");
+        TextField txtName = new TextField(student.getFullName());
+        Label lblAddress = new Label("Address:");
+        TextField txtAddress = new TextField(student.getAddress());
+        Label lblEmail = new Label("Email:");
+        TextField txtEmail = new TextField(student.getEmail());
+        Label lblGpa = new Label("GPA:");
+        TextField txtGpa = new TextField(student.getGPA() + "");
+        Button btnAdd = new Button("Add Student");
+                
+        GridPane grid = new GridPane();
+        grid.add(lblName, 0, 0);
+        grid.add(txtName, 1, 0);
+        grid.add(lblAddress, 0, 1);
+        grid.add(txtAddress, 1, 1);
+        grid.add(lblEmail, 0, 2);
+        grid.add(txtEmail, 1, 2);
+        grid.add(lblGpa, 0, 3);
+        grid.add(txtGpa, 1, 3);
+        grid.add(btnAdd, 0, 4);
+        
+        grid.setAlignment(Pos.CENTER);
+        
+    	// On button click, append new Student() to students
+        btnAdd.setOnAction(e -> {
+            String name = txtName.getText();
+            String address = txtAddress.getText();
+            String email = txtEmail.getText();
+            double gpa = Double.valueOf(txtGpa.getText());
+            
+            student.editStudent(name, address, email, gpa);
+
+            stage.close();
+        });
+        
+        Scene scene = new Scene(grid, 300, 200);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public Student(String fullName, String Address, 
                 String email, double gpa, int ssn){
         this.studentID = studentID;
@@ -98,7 +138,11 @@ public class Student {
     
     public String getFullName(){
         return this.fullName;
-    }   
+    }
+    
+    public String getEmail() {
+    	return this.email;
+    }
 
     public Double getGPA(){
         return this.gpa;
