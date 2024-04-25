@@ -91,7 +91,7 @@ public class App extends Application {
         
         Button editCourse = new Button("Course");
         editCourse.setMinWidth(300);
-        editCourse.setOnAction(e -> {Course.edit(courses);});
+        editCourse.setOnAction(e -> {Course.edit(courses, semesters);});
         pane.add(editCourse,1,4);
         
         Label lblAssign = new Label("Assign...");
