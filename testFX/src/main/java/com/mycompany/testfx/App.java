@@ -15,11 +15,9 @@ import com.mycompany.testfx.Student;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 
@@ -34,6 +32,57 @@ public class App extends Application {
     private static ArrayList<Course> courses;
     private static ArrayList<Schedule> schedules;
     private static ArrayList<Enrollment> enrollments;
+    
+    // REPORTS
+    // There should be one/two dropdowns for specifying, and a textarea for printing out
+    
+    private static void coursesInSemester() {
+    	Stage stage = new Stage();
+        
+        stage.setTitle("Courses Taught in <Semester>");
+
+        ComboBox<Semester> cmboSemesters = new ComboBox<>();
+	cmboSemesters.setStyle("-fx-font-family: monospace");
+	
+	TextArea textArea = new TextArea();
+
+	for (Semester sem : semesters) {
+	    cmboSemesters.getItems().add(sem);
+	}
+	
+	var semester = new Object() {
+	    Semester sem = null;
+	};
+	cmboSemesters.setOnAction(f -> {
+	    semester.sem = cmboSemesters.getSelectionModel().getSelectedItem();
+	    textArea.clear();
+	    for (Course c : courses) {
+	            if (c.getSemester().equals(semester.sem)) {
+	                System.out.println(c.getPrefix() + " " + c.getNumber());
+	            }
+	    }
+	});
+        
+        GridPane grid = new GridPane();
+        
+        grid.setAlignment(Pos.CENTER);
+        
+        Scene scene = new Scene(grid, 300, 200);
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    private static void coursesByFaculty() {
+	
+    }
+    
+    private static void coursesOfStudent() {
+	
+    }
+    
+    private static void studentsInCourse() {
+	
+    }
 	
     @Override
     public void start(Stage stage) {
