@@ -74,35 +74,31 @@ public class Student {
     	// Create a window
         Stage stage = new Stage();
         
-        Student student = students.get(0);
-        
-        stage.setTitle("Create Student");
-        
-        Label lblName = new Label("Full Name:");
-        TextField txtName = new TextField(student.getFullName());
-        Label lblAddress = new Label("Address:");
-        TextField txtAddress = new TextField(student.getAddress());
-        Label lblEmail = new Label("Email:");
-        TextField txtEmail = new TextField(student.getEmail());
-        Label lblGpa = new Label("GPA:");
-        TextField txtGpa = new TextField(student.getGPA() + "");
-        Button btnAdd = new Button("Add Student");
+        var student = new Object(){Student stu = students.get(0);};
         ComboBox<Student> targeter = new ComboBox<Student>();
         
         for (Student s : students) {
             targeter.getItems().add(s);
         }
         
-        targeter.setOnAction(e -> {
-            // Get the selected student's ID
-//            student = targeter.getSelectionModel().getSelectedItem();
-                    
-                    // Refill each TextField with the data from the selected student
-                    txtName.setText(student.getFullName());
-                    txtAddress.setText(student.getAddress());
-                    txtEmail.setText(student.getEmail());
-                    txtGpa.setText(String.valueOf(student.getGPA()));
-                    
+        stage.setTitle("Create Student");
+        
+        Label lblName = new Label("Full Name:");
+        TextField txtName = new TextField(student.stu.getFullName());
+        Label lblAddress = new Label("Address:");
+        TextField txtAddress = new TextField(student.stu.getAddress());
+        Label lblEmail = new Label("Email:");
+        TextField txtEmail = new TextField(student.stu.getEmail());
+        Label lblGpa = new Label("GPA:");
+        TextField txtGpa = new TextField(student.stu.getGPA() + "");
+        Button btnAdd = new Button("Submit");
+
+        targeter.setOnAction(f -> {
+                student.stu = targeter.getSelectionModel().getSelectedItem();
+                txtName.setText(student.stu.getFullName());
+                txtAddress.setText(student.stu.getAddress());
+                txtEmail.setText(student.stu.getEmail());
+                txtGpa.setText(String.valueOf(student.stu.getGPA()));
         });
                 
         GridPane grid = new GridPane();
@@ -119,14 +115,14 @@ public class Student {
         
         grid.setAlignment(Pos.CENTER);
         
-    	// On button click, append new Student() to students
+    	// On button click, submit change
         btnAdd.setOnAction(e -> {
             String name = txtName.getText();
             String address = txtAddress.getText();
             String email = txtEmail.getText();
             double gpa = Double.valueOf(txtGpa.getText());
             
-            student.editStudent(name, address, email, gpa);
+            student.stu.editStudent(name, address, email, gpa);
 
             stage.close();
         });
