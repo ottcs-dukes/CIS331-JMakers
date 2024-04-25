@@ -19,7 +19,7 @@ public class Semester {
     	// On button click, append new Semester() to semesters
     	Stage stage = new Stage();
         
-        stage.setTitle("Create Semester");
+        stage.setTitle("Edit Semester");
 
         
         Label lblPeriod = new Label("Semester: ");
@@ -54,10 +54,46 @@ public class Semester {
         
     }
     
-    static void edit(Semester semester) {
+    static void edit(ArrayList <Semester> semesters) {
     	// Create a window with data fields filled
     	// On button click, iterate through each field and set each
-    	System.out.println("Edit Semester");
+    	Stage stage = new Stage();
+        
+        stage.setTitle("Create Semester");
+
+        Semester semester = semesters.get(0);
+        
+        Label lblPeriod = new Label("Semester: ");
+            TextField txtPeriod = new TextField(semester.getPeriod());
+        Label lblYear = new Label("Year: ");
+            TextField txtYear = new TextField(semester.getYear() + "");
+        Button btnAdd = new Button("Edit Semester");
+        
+        
+        GridPane grid = new GridPane();
+        
+        grid.add(lblPeriod, 0, 0);
+        grid.add(txtPeriod, 1, 0);
+        grid.add(lblYear, 0, 1);
+        grid.add(txtYear, 1, 1);
+        grid.add(btnAdd, 0, 2);
+        
+        grid.setAlignment(Pos.CENTER);
+        
+        btnAdd.setOnAction(e -> {
+            String period = txtPeriod.getText();
+            int year = Integer.valueOf(txtYear.getText());
+            
+            
+            semester.editSemester(period, year);
+            stage.close();
+        });
+        
+        Scene scene = new Scene(grid, 300, 200);
+        stage.setScene(scene);
+        stage.show();
+        
+    
     }
 
     public Semester(String period, int year) {
