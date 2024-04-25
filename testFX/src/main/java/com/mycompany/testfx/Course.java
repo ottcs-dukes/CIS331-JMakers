@@ -165,7 +165,7 @@ public class Course {
 	var semester = new Object() {
 	    Semester sem = null;
 	};
-	cmboSemesters.setOnAction(f -> {
+	cmboSemesters.setOnAction(e -> {
 	    semester.sem = cmboSemesters.getSelectionModel().getSelectedItem();
 	});
 
@@ -287,5 +287,9 @@ public class Course {
     public boolean equals(Course course) {
 	return this.prefix.equals(course.getPrefix()) && this.number == course.getNumber();
     }
-
+    
+    public String toString() {
+        return prefix + " " + number;
+    }
+    
 }
