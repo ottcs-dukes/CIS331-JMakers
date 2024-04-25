@@ -30,7 +30,7 @@ public class Enrollment {
             this.student.equals(schedule.getStudent());
     }
     
-    public void assign(ArrayList<Student> students, ArrayList<Course> courses) {
+    public static void assign(ArrayList<Student> students, ArrayList<Course> courses) {
         
     }
 
