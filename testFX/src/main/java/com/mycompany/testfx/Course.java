@@ -26,6 +26,9 @@ public class Course {
     	// On button click, append new Course() to courses
         Stage stage = new Stage();
         
+        stage.setTitle("Create Course");
+
+        
         Label lblPrefix = new Label("Course Prefix: ");
             TextField txtPrefix = new TextField();
         Label lblNumber = new Label("Course Number: ");

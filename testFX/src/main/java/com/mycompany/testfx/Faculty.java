@@ -26,6 +26,9 @@ public class Faculty {
     	// On button click, append new Faculty() to faculty
     	Stage stage = new Stage();
         
+        stage.setTitle("Create Faculty");
+
+        
         Label lblName = new Label("Full Name:");
             TextField txtName = new TextField();
         Label lblEmail = new Label("Email:");

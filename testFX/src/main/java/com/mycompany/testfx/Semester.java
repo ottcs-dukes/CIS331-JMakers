@@ -19,6 +19,9 @@ public class Semester {
     	// On button click, append new Semester() to semesters
     	Stage stage = new Stage();
         
+        stage.setTitle("Create Semester");
+
+        
         Label lblPeriod = new Label("Semester: ");
             TextField txtPeriod = new TextField();
         Label lblYear = new Label("Year: ");

@@ -23,6 +23,8 @@ public class Student {
     	// Create a window
         Stage stage = new Stage();
         
+        stage.setTitle("Create Student");
+        
         Label lblName = new Label("Full Name:");
         TextField txtName = new TextField();
         Label lblAddress = new Label("Address:");
