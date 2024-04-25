@@ -14,6 +14,7 @@ import com.mycompany.testfx.Semester;
 import com.mycompany.testfx.Student;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -42,43 +43,54 @@ public class App extends Application {
         stage.setTitle("JMakers | Main Menu");
         
         GridPane pane = new GridPane();
+        pane.setAlignment(Pos.CENTER);
         var scene = new Scene(pane, 640, 480);
         
         Label createLabel = new Label("Create...");
+        createLabel.setMinWidth(200);
         pane.add(createLabel,0,0);
         
         Button createSemester = new Button("Semester");
+        createSemester.setMinWidth(200);
         createSemester.setOnAction(e -> {Semester.create(semesters);});
         pane.add(createSemester,0,1);
         
         Button createFaculty = new Button("Faculty");
+        createFaculty.setMinWidth(200);
         createFaculty.setOnAction(e -> {Faculty.create(faculty);});
         pane.add(createFaculty,0,2);
         
         Button createStudent = new Button("Student");
+        createStudent.setMinWidth(200);
         createStudent.setOnAction(e -> {Student.create(students);});
         pane.add(createStudent,0,3);
         
         Button createCourse = new Button("Course");
+        createCourse.setMinWidth(200);
         createCourse.setOnAction(e -> {Course.create(courses, semesters);});
         pane.add(createCourse,0,4);
         
         Label editLabel = new Label("Edit...");
+        editLabel.setMinWidth(200);
         pane.add(editLabel,1,0);
         
         Button editSemester = new Button("Semester");
+        editSemester.setMinWidth(200);
         editSemester.setOnAction(e -> {Semester.edit(semesters);});
         pane.add(editSemester,1,1);
         
         Button editFaculty = new Button("Faculty");
+        editFaculty.setMinWidth(200);
         editFaculty.setOnAction(e -> {Faculty.edit(faculty);});
         pane.add(editFaculty,1,2);
         
         Button editStudent = new Button("Student");
+        editStudent.setMinWidth(200);
         editStudent.setOnAction(e -> {Student.edit(students);});
         pane.add(editStudent,1,3);
         
         Button editCourse = new Button("Course");
+        editCourse.setMinWidth(200);
         editCourse.setOnAction(e -> {Course.edit(courses);});
         pane.add(editCourse,1,4);
         
