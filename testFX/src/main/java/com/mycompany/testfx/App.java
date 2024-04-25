@@ -75,7 +75,7 @@ public class App extends Application {
         pane.add(editFaculty,1,2);
         
         Button editStudent = new Button("Student");
-        editStudent.setOnAction(e -> {Student.edit(null);});
+        editStudent.setOnAction(e -> {Student.edit(students.get(0));});
         pane.add(editStudent,1,3);
         
         Button editCourse = new Button("Course");
