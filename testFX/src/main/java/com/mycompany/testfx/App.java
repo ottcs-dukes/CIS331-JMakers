@@ -47,52 +47,66 @@ public class App extends Application {
         var scene = new Scene(pane, 640, 480);
         
         Label createLabel = new Label("Create...");
-        createLabel.setMinWidth(200);
+        createLabel.setMinWidth(300);
         pane.add(createLabel,0,0);
         
         Button createSemester = new Button("Semester");
-        createSemester.setMinWidth(200);
+        createSemester.setMinWidth(300);
         createSemester.setOnAction(e -> {Semester.create(semesters);});
         pane.add(createSemester,0,1);
         
         Button createFaculty = new Button("Faculty");
-        createFaculty.setMinWidth(200);
+        createFaculty.setMinWidth(300);
         createFaculty.setOnAction(e -> {Faculty.create(faculty);});
         pane.add(createFaculty,0,2);
         
         Button createStudent = new Button("Student");
-        createStudent.setMinWidth(200);
+        createStudent.setMinWidth(300);
         createStudent.setOnAction(e -> {Student.create(students);});
         pane.add(createStudent,0,3);
         
         Button createCourse = new Button("Course");
-        createCourse.setMinWidth(200);
+        createCourse.setMinWidth(300);
         createCourse.setOnAction(e -> {Course.create(courses, semesters);});
         pane.add(createCourse,0,4);
         
         Label editLabel = new Label("Edit...");
-        editLabel.setMinWidth(200);
+        editLabel.setMinWidth(300);
         pane.add(editLabel,1,0);
         
         Button editSemester = new Button("Semester");
-        editSemester.setMinWidth(200);
+        editSemester.setMinWidth(300);
         editSemester.setOnAction(e -> {Semester.edit(semesters);});
         pane.add(editSemester,1,1);
         
         Button editFaculty = new Button("Faculty");
-        editFaculty.setMinWidth(200);
+        editFaculty.setMinWidth(300);
         editFaculty.setOnAction(e -> {Faculty.edit(faculty);});
         pane.add(editFaculty,1,2);
         
         Button editStudent = new Button("Student");
-        editStudent.setMinWidth(200);
+        editStudent.setMinWidth(300);
         editStudent.setOnAction(e -> {Student.edit(students);});
         pane.add(editStudent,1,3);
         
         Button editCourse = new Button("Course");
-        editCourse.setMinWidth(200);
+        editCourse.setMinWidth(300);
         editCourse.setOnAction(e -> {Course.edit(courses);});
         pane.add(editCourse,1,4);
+        
+        Label lblAssign = new Label("Assign...");
+        lblAssign.setMinWidth(600);
+        pane.add(lblAssign,0,5,2,1);
+        
+        Button btnStuToCourse = new Button("Student to Course");
+        btnStuToCourse.setMinWidth(600);
+        // TODO
+        pane.add(btnStuToCourse,0,6,2,1);
+        
+        Button btnFacultyToCourse = new Button("Faculty to Course");
+        btnFacultyToCourse.setMinWidth(600);
+        // TODO
+        pane.add(btnFacultyToCourse,0,7,2,1);
         
         stage.setScene(scene);
         stage.show();

@@ -1,4 +1,7 @@
 package com.mycompany.testfx;
+
+import java.util.ArrayList;
+
 public class Enrollment {
 
     private Course course;
@@ -25,6 +28,10 @@ public class Enrollment {
     public boolean equals(Enrollment schedule) {
         return this.course.equals(schedule.getCourse()) && 
             this.student.equals(schedule.getStudent());
+    }
+    
+    public void assign(ArrayList<Student> students, ArrayList<Course> courses) {
+        
     }
 
 }
