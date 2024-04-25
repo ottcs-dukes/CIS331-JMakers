@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 
 public class Course {
 
@@ -21,7 +22,7 @@ public class Course {
     private Student[] enrollment;
     private Semester semester;
     
-    static void create(ArrayList<Course> courses) {
+    static void create(ArrayList<Course> courses, ArrayList<Semester> semesters) {
     	// Create a window
     	// On button click, append new Course() to courses
         Stage stage = new Stage();
@@ -44,7 +45,7 @@ public class Course {
         Label lblCredit = new Label("Credit Hours: ");
             TextField txtCredit = new TextField();
         Label lblSemester = new Label("Semester Taught: ");
-            TextField txtSemester = new TextField();
+            ComboBox<Semester> cmboSemesters = new ComboBox<>();
         Button btnAdd = new Button("Add Course");
             
             
@@ -65,7 +66,7 @@ public class Course {
         grid.add(lblCredit, 0, 6);
         grid.add(txtCredit, 1, 6);
         grid.add(lblSemester, 0, 7);
-        grid.add(txtSemester, 1, 7);
+        grid.add(cmboSemesters, 1, 7);
         grid.add(btnAdd, 0, 8);
         
         grid.setAlignment(Pos.CENTER);
