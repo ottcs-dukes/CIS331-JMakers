@@ -2,9 +2,7 @@ package com.mycompany.testfx;
 import java.util.ArrayList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -71,9 +69,12 @@ public class Student {
         
     }
     
-    static void edit(Student student) {
+    static void edit(ArrayList<Student> students) {
+    	
     	// Create a window
         Stage stage = new Stage();
+        
+        Student student = students.get(0);
         
         stage.setTitle("Create Student");
         
@@ -86,6 +87,23 @@ public class Student {
         Label lblGpa = new Label("GPA:");
         TextField txtGpa = new TextField(student.getGPA() + "");
         Button btnAdd = new Button("Add Student");
+        ComboBox<Student> targeter = new ComboBox<Student>();
+        
+        for (Student s : students) {
+            targeter.getItems().add(s);
+        }
+        
+        targeter.setOnAction(e -> {
+            // Get the selected student's ID
+//            student = targeter.getSelectionModel().getSelectedItem();
+                    
+                    // Refill each TextField with the data from the selected student
+                    txtName.setText(student.getFullName());
+                    txtAddress.setText(student.getAddress());
+                    txtEmail.setText(student.getEmail());
+                    txtGpa.setText(String.valueOf(student.getGPA()));
+                    
+        });
                 
         GridPane grid = new GridPane();
         grid.add(lblName, 0, 0);
@@ -96,7 +114,8 @@ public class Student {
         grid.add(txtEmail, 1, 2);
         grid.add(lblGpa, 0, 3);
         grid.add(txtGpa, 1, 3);
-        grid.add(btnAdd, 0, 4);
+        grid.add(targeter, 0, 4);
+        grid.add(btnAdd, 1, 4);
         
         grid.setAlignment(Pos.CENTER);
         
@@ -185,6 +204,11 @@ public class Student {
             }
         }
         return str;
+    }
+    
+    @Override
+    public String toString() {
+    	return this.studentID + " - " + this.fullName;
     }
 
 }

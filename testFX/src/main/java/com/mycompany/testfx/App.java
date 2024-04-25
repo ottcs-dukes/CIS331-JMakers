@@ -67,19 +67,19 @@ public class App extends Application {
         pane.add(editLabel,1,0);
         
         Button editSemester = new Button("Semester");
-        editSemester.setOnAction(e -> {Semester.edit(semesters.get(0));});
+        editSemester.setOnAction(e -> {Semester.edit(semesters);});
         pane.add(editSemester,1,1);
         
         Button editFaculty = new Button("Faculty");
-        editFaculty.setOnAction(e -> {Faculty.edit(faculty.get(0));});
+        editFaculty.setOnAction(e -> {Faculty.edit(faculty);});
         pane.add(editFaculty,1,2);
         
         Button editStudent = new Button("Student");
-        editStudent.setOnAction(e -> {Student.edit(students.get(0));});
+        editStudent.setOnAction(e -> {Student.edit(students);});
         pane.add(editStudent,1,3);
         
         Button editCourse = new Button("Course");
-        editCourse.setOnAction(e -> {Course.edit(courses.get(0));});
+        editCourse.setOnAction(e -> {Course.edit(courses);});
         pane.add(editCourse,1,4);
         
         stage.setScene(scene);
