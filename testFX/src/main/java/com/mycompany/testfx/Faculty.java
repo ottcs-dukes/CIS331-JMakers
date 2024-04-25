@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 
 public class Faculty {
     
@@ -93,25 +94,32 @@ public class Faculty {
     	// On button click, iterate through each field and set each
     	Stage stage = new Stage();
         
+        var facultys = new Object() {Faculty facu = faculties.get(0);};
+        ComboBox<Faculty> targeter = new ComboBox<Faculty>();
+        
+        for (Faculty f: faculties) {
+            targeter.getItems().add(f);
+        }
+        
         stage.setTitle("Edit Faculty");
         
         Faculty faculty = faculties.get(0);
 
         
         Label lblName = new Label("Full Name:");
-            TextField txtName = new TextField(faculty.getName());
+            TextField txtName = new TextField(facultys.facu.getName());
         Label lblEmail = new Label("Email:");
-            TextField txtEmail = new TextField(faculty.getEmail());
+            TextField txtEmail = new TextField(facultys.facu.getEmail());
         Label lblBuilding = new Label("Building Name:");
-            TextField txtBuilding = new TextField(faculty.getBuilding());
+            TextField txtBuilding = new TextField(facultys.facu.getBuilding());
         Label lblOffice = new Label("Office Number:");
-            TextField txtOffice = new TextField(faculty.getOffice() + "");
+            TextField txtOffice = new TextField(facultys.facu.getOffice() + "");
         Label lblPhone = new Label("Phone Number:");
-            TextField txtPhone = new TextField(faculty.getPhone() + "");
+            TextField txtPhone = new TextField(facultys.facu.getPhone() + "");
         Label lblDepartment = new Label("Department:");
-            TextField txtDepartment = new TextField(faculty.getDepartment());
+            TextField txtDepartment = new TextField(facultys.facu.getDepartment());
         Label lblPosition = new Label("Position:");
-            TextField txtPosition = new TextField(faculty.getPosition());
+            TextField txtPosition = new TextField(facultys.facu.getPosition());
         Button btnAdd = new Button("Edit Faculty");
             
         GridPane grid = new GridPane();
