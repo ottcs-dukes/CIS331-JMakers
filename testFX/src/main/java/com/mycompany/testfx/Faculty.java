@@ -88,12 +88,14 @@ public class Faculty {
         
     }
     
-    static void edit(ArrayList<Faculty> faculty) {
+    static void edit(ArrayList<Faculty> faculties) {
     	// Create a window with data fields filled
     	// On button click, iterate through each field and set each
     	Stage stage = new Stage();
         
         stage.setTitle("Edit Faculty");
+        
+        Faculty faculty = faculties.get(0);
 
         
         Label lblName = new Label("Full Name:");
