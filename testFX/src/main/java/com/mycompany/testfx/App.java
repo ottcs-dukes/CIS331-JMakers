@@ -60,18 +60,18 @@ public class App extends Application {
         pane.add(createStudent,0,3);
         
         Button createCourse = new Button("Course");
-        createCourse.setOnAction(e -> {Course.create(courses);});
+        createCourse.setOnAction(e -> {Course.create(courses, semesters);});
         pane.add(createCourse,0,4);
         
         Label editLabel = new Label("Edit...");
         pane.add(editLabel,1,0);
         
         Button editSemester = new Button("Semester");
-        editSemester.setOnAction(e -> {Semester.edit(null);});
+        editSemester.setOnAction(e -> {Semester.edit(semesters.get(0));});
         pane.add(editSemester,1,1);
         
         Button editFaculty = new Button("Faculty");
-        editFaculty.setOnAction(e -> {Faculty.edit(null);});
+        editFaculty.setOnAction(e -> {Faculty.edit(faculty.get(0));});
         pane.add(editFaculty,1,2);
         
         Button editStudent = new Button("Student");
@@ -79,7 +79,7 @@ public class App extends Application {
         pane.add(editStudent,1,3);
         
         Button editCourse = new Button("Course");
-        editCourse.setOnAction(e -> {Course.edit(null);});
+        editCourse.setOnAction(e -> {Course.edit(courses.get(0));});
         pane.add(editCourse,1,4);
         
         stage.setScene(scene);
