@@ -70,6 +70,16 @@ public class Course {
         grid.add(btnAdd, 0, 8);
         
         grid.setAlignment(Pos.CENTER);
+        cmboSemesters.setStyle("-fx-font-family: monospace");
+        
+        for (Semester sem : semesters) {
+                cmboSemesters.getItems().add(sem);
+        }
+        
+        var semester = new Object(){Semester sem = null;};
+        cmboSemesters.setOnAction(f -> {
+                semester.sem = cmboSemesters.getSelectionModel().getSelectedItem();
+        });
         
        btnAdd.setOnAction(e -> {
             String prefix = txtPrefix.getText();
@@ -79,9 +89,8 @@ public class Course {
             String start = txtStart.getText();
             String end = txtEnd.getText();
             int credit = Integer.valueOf(txtCredit.getText());
-            Semester semester = new Semester("spring", 2024);
-        
-            Course course = new Course(prefix, number, name, days, start, end, credit, semester);
+            
+            Course course = new Course(prefix, number, name, days, start, end, credit, semester.sem);
             courses.add(course);
             stage.close();
         });
