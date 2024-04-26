@@ -169,7 +169,7 @@ public class App extends Application {
 	Button btnStuToCourse = new Button("Student to Course");
 	btnStuToCourse.setMinWidth(600);
 	btnStuToCourse.setOnAction(e -> {
-	    Enrollment.assign(students, courses);
+	    Enrollment.assign(students, courses, enrollments);
 	});
 	pane.add(btnStuToCourse, 0, 6, 2, 1);
 

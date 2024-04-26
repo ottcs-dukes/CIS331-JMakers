@@ -37,7 +37,8 @@ public class Enrollment {
             this.student.equals(schedule.getStudent());
     }
     
-    public static void assign(ArrayList<Student> students, ArrayList<Course> courses) {
+    public static void assign(ArrayList<Student> students, ArrayList<Course> courses,
+        ArrayList<Enrollment> enrollments) {
         Stage stage = new Stage();
         
         stage.setTitle("Assign a Student to a Course");
@@ -87,6 +88,12 @@ public class Enrollment {
         Scene scene = new Scene(grid, 300, 200);
         stage.setScene(scene);
         stage.show();
+        
+        btnAdd.setOnAction(e -> {
+            Enrollment enrollment = new Enrollment(course.co, student.stu);
+            enrollments.add(enrollment);
+            stage.close();
+        });
     }
 
 }
