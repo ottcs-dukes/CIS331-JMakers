@@ -175,7 +175,9 @@ public class App extends Application {
 
 	Button btnFacultyToCourse = new Button("Faculty to Course");
 	btnFacultyToCourse.setMinWidth(600);
-	// TODO
+	btnFacultyToCourse.setOnAction(e -> {
+            Schedule.assign(faculty, courses, schedules);
+        });
 	pane.add(btnFacultyToCourse, 0, 7, 2, 1);
 
 	Label lblReport = new Label("Generate Report");

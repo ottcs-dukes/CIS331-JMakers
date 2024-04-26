@@ -229,6 +229,9 @@ public class Faculty {
         return this.name.equals(fac.getName());
     }
 
+    public String toString() {
+        return this.name;
+    }
 }
 
 
