@@ -129,6 +129,7 @@ public class Course {
 	TextField txtCredit = new TextField(course.crs.getCreditHours() + "");
 	Label lblSemester = new Label("Semester Taught: ");
 	ComboBox<Semester> cmboSemesters = new ComboBox<>();
+        Label lblCourse = new Label("Courses");
 	Button btnAdd = new Button("Submit Edit");
 
 	targeter.setOnAction(f -> {
@@ -153,7 +154,10 @@ public class Course {
 	grid.add(txtCredit, 1, 6);
 	grid.add(lblSemester, 0, 7);
 	grid.add(cmboSemesters, 1, 7);
-	grid.add(btnAdd, 0, 8);
+	grid.add(lblCourse, 0, 8);
+        grid.add(targeter, 1, 8);
+        grid.add(btnAdd, 0, 9);
+
 
 	grid.setAlignment(Pos.CENTER);
 	cmboSemesters.setStyle("-fx-font-family: monospace");
@@ -183,7 +187,7 @@ public class Course {
 	Scene scene = new Scene(grid, 400, 400);
 	stage.setScene(scene);
 	stage.show();
-	System.out.println("Edit Course");
+	
     }
 
     public Course(String prefix, int number, String name, String[] days, String startTime, String endTime,

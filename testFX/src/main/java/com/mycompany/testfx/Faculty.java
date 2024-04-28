@@ -103,7 +103,7 @@ public class Faculty {
         
         stage.setTitle("Edit Faculty");
         
-        Faculty faculty = faculties.get(0);
+        
 
         
         Label lblName = new Label("Full Name:");
@@ -166,7 +166,7 @@ public class Faculty {
             String position = txtPosition.getText();
             
             
-            faculty.editFaculty(name, email, building, office, phone, department, position);
+            facultys.facu.editFaculty(name, email, building, office, phone, department, position);
             stage.close();
             
             

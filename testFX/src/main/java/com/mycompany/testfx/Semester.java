@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 
 public class Semester {
 
@@ -59,15 +60,29 @@ public class Semester {
     	// On button click, iterate through each field and set each
     	Stage stage = new Stage();
         
+        var semester = new Object() {Semester sem = semesters.get(0);};
+        ComboBox<Semester> targeter = new ComboBox<Semester>();
+        
+        for (Semester s: semesters) {
+            targeter.getItems().add(s);
+        }
+        
         stage.setTitle("Edit Semester");
 
-        Semester semester = semesters.get(0);
+        
         
         Label lblPeriod = new Label("Semester: ");
-            TextField txtPeriod = new TextField(semester.getPeriod());
+            TextField txtPeriod = new TextField(semester.sem.getPeriod());
         Label lblYear = new Label("Year: ");
-            TextField txtYear = new TextField(semester.getYear() + "");
+            TextField txtYear = new TextField(semester.sem.getYear()+ "");
         Button btnAdd = new Button("Submit Edit");
+        
+        targeter.setOnAction(f -> {
+            semester.sem = targeter.getSelectionModel().getSelectedItem();
+            txtPeriod.setText(semester.sem.getPeriod());
+            txtYear.setText(String.valueOf(semester.sem.getYear()));
+            
+        });
         
         
         GridPane grid = new GridPane();
@@ -77,6 +92,7 @@ public class Semester {
         grid.add(lblYear, 0, 1);
         grid.add(txtYear, 1, 1);
         grid.add(btnAdd, 0, 2);
+        grid.add(targeter, 1, 2);
         
         grid.setAlignment(Pos.CENTER);
         
@@ -85,7 +101,7 @@ public class Semester {
             int year = Integer.valueOf(txtYear.getText());
             
             
-            semester.editSemester(period, year);
+            semester.sem.editSemester(period, year);
             stage.close();
         });
         
