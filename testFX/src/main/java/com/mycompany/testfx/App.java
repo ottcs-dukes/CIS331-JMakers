@@ -76,6 +76,9 @@ public class App extends Application {
     }
 
     private static void coursesByFaculty() {
+        Stage stage = new Stage();
+
+	stage.setTitle("Courses Taught by Faculty in a Semester");
 
     }
 
@@ -190,7 +193,23 @@ public class App extends Application {
 	    coursesInSemester();
 	});
 	pane.add(btnCIS, 0, 9);
-
+        
+        Button btnCTF = new Button("Courses Taught by Faculty in a Semester");
+	btnCTF.setMinWidth(300);
+        // set on action CTF
+        pane.add(btnCTF, 0, 10);
+        
+//        Button btnCSS = new Button("Courses a Student is Enrolled in a Semester");
+//	btnCSS.setMinWidth(300);
+//        // set on action CTF
+//        pane.add(btnCSS, 0, 11);
+//        
+//        Button btnCAA = new Button("Students Enrolled in a Course in a Semester");
+//	btnCAA.setMinWidth(300);
+//        // set on action CTF
+//        pane.add(btnCAA, 0, 12);
+        
+        
 	stage.setScene(scene);
 	stage.show();
     }
