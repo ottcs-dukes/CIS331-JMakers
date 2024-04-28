@@ -81,7 +81,7 @@ public class Student {
             targeter.getItems().add(s);
         }
         
-        stage.setTitle("Create Student");
+        stage.setTitle("Edit Student");
         
         Label lblName = new Label("Full Name:");
         TextField txtName = new TextField(student.stu.getFullName());
@@ -91,7 +91,7 @@ public class Student {
         TextField txtEmail = new TextField(student.stu.getEmail());
         Label lblGpa = new Label("GPA:");
         TextField txtGpa = new TextField(student.stu.getGPA() + "");
-        Button btnAdd = new Button("Submit");
+        Button btnAdd = new Button("Submit Edit");
 
         targeter.setOnAction(f -> {
                 student.stu = targeter.getSelectionModel().getSelectedItem();
@@ -110,8 +110,8 @@ public class Student {
         grid.add(txtEmail, 1, 2);
         grid.add(lblGpa, 0, 3);
         grid.add(txtGpa, 1, 3);
-        grid.add(targeter, 0, 4);
-        grid.add(btnAdd, 1, 4);
+        grid.add(btnAdd, 0, 4);
+        grid.add(targeter, 1, 4);
         
         grid.setAlignment(Pos.CENTER);
         
@@ -127,7 +127,7 @@ public class Student {
             stage.close();
         });
         
-        Scene scene = new Scene(grid, 300, 200);
+        Scene scene = new Scene(grid, 300, 300);
         stage.setScene(scene);
         stage.show();
     }

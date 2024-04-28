@@ -95,7 +95,7 @@ public class Course {
 	    stage.close();
 	});
 
-	Scene scene = new Scene(grid, 300, 300);
+	Scene scene = new Scene(grid, 400, 400);
 	stage.setScene(scene);
 	stage.show();
 
@@ -115,7 +115,7 @@ public class Course {
 	    targeter.getItems().add(c);
 	}
 
-	stage.setTitle("Create Course");
+	stage.setTitle("Edit Course");
 
 	Label lblName = new Label("Course Name: ");
 	TextField txtName = new TextField(course.crs.getName());
@@ -129,7 +129,7 @@ public class Course {
 	TextField txtCredit = new TextField(course.crs.getCreditHours() + "");
 	Label lblSemester = new Label("Semester Taught: ");
 	ComboBox<Semester> cmboSemesters = new ComboBox<>();
-	Button btnAdd = new Button("Submit");
+	Button btnAdd = new Button("Submit Edit");
 
 	targeter.setOnAction(f -> {
 	    course.crs = targeter.getSelectionModel().getSelectedItem();
@@ -180,7 +180,7 @@ public class Course {
 	    stage.close();
 	});
 
-	Scene scene = new Scene(grid, 300, 300);
+	Scene scene = new Scene(grid, 400, 400);
 	stage.setScene(scene);
 	stage.show();
 	System.out.println("Edit Course");

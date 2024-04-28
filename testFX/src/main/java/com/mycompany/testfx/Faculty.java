@@ -120,7 +120,20 @@ public class Faculty {
             TextField txtDepartment = new TextField(facultys.facu.getDepartment());
         Label lblPosition = new Label("Position:");
             TextField txtPosition = new TextField(facultys.facu.getPosition());
-        Button btnAdd = new Button("Edit Faculty");
+        Button btnAdd = new Button("Submit Edit");
+        
+        
+        targeter.setOnAction (f -> { 
+            facultys.facu = targeter.getSelectionModel().getSelectedItem();
+            txtName.setText(facultys.facu.getName());
+            txtEmail.setText(facultys.facu.getEmail());
+            txtBuilding.setText(facultys.facu.getBuilding());
+            txtOffice.setText(String.valueOf(facultys.facu.getOffice()));
+            txtPhone.setText(String.valueOf(facultys.facu.getPhone()));
+            txtDepartment.setText(facultys.facu.getDepartment());
+            txtPosition.setText(facultys.facu.getPosition());
+             
+        });
             
         GridPane grid = new GridPane();
         
@@ -138,6 +151,7 @@ public class Faculty {
         grid.add(txtDepartment, 1, 5);
         grid.add(lblPosition, 0, 6);
         grid.add(txtPosition, 1, 6);
+        grid.add(targeter, 1, 7);
         grid.add(btnAdd, 0, 7);
         
         grid.setAlignment(Pos.CENTER);
@@ -158,7 +172,7 @@ public class Faculty {
             
         });
         
-        Scene scene = new Scene(grid, 300, 300);
+        Scene scene = new Scene(grid, 400, 400);
         stage.setScene(scene);
         stage.show();
             

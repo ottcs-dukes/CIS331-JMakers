@@ -19,14 +19,14 @@ public class Semester {
     	// On button click, append new Semester() to semesters
     	Stage stage = new Stage();
         
-        stage.setTitle("Edit Semester");
+        stage.setTitle("Create Semester");
 
         
         Label lblPeriod = new Label("Semester: ");
             TextField txtPeriod = new TextField();
         Label lblYear = new Label("Year: ");
             TextField txtYear = new TextField();
-        Button btnAdd = new Button("Add Semester");
+        Button btnAdd = new Button("Create Semester");
         
         
         GridPane grid = new GridPane();
@@ -59,7 +59,7 @@ public class Semester {
     	// On button click, iterate through each field and set each
     	Stage stage = new Stage();
         
-        stage.setTitle("Create Semester");
+        stage.setTitle("Edit Semester");
 
         Semester semester = semesters.get(0);
         
@@ -67,7 +67,7 @@ public class Semester {
             TextField txtPeriod = new TextField(semester.getPeriod());
         Label lblYear = new Label("Year: ");
             TextField txtYear = new TextField(semester.getYear() + "");
-        Button btnAdd = new Button("Edit Semester");
+        Button btnAdd = new Button("Submit Edit");
         
         
         GridPane grid = new GridPane();
