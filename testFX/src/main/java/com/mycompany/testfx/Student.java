@@ -91,6 +91,7 @@ public class Student {
         TextField txtEmail = new TextField(student.stu.getEmail());
         Label lblGpa = new Label("GPA:");
         TextField txtGpa = new TextField(student.stu.getGPA() + "");
+        Label lblDropdown = new Label ("Pick Student: ");
         Button btnAdd = new Button("Submit Edit");
 
         targeter.setOnAction(f -> {
@@ -110,8 +111,9 @@ public class Student {
         grid.add(txtEmail, 1, 2);
         grid.add(lblGpa, 0, 3);
         grid.add(txtGpa, 1, 3);
-        grid.add(btnAdd, 0, 4);
+        grid.add(lblDropdown, 0, 4);
         grid.add(targeter, 1, 4);
+        grid.add(btnAdd, 0, 5);
         
         grid.setAlignment(Pos.CENTER);
         

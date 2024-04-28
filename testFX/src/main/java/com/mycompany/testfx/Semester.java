@@ -75,6 +75,7 @@ public class Semester {
             TextField txtPeriod = new TextField(semester.sem.getPeriod());
         Label lblYear = new Label("Year: ");
             TextField txtYear = new TextField(semester.sem.getYear()+ "");
+        Label lblSemes = new Label("Pick Semester: ");
         Button btnAdd = new Button("Submit Edit");
         
         targeter.setOnAction(f -> {
@@ -91,8 +92,9 @@ public class Semester {
         grid.add(txtPeriod, 1, 0);
         grid.add(lblYear, 0, 1);
         grid.add(txtYear, 1, 1);
-        grid.add(btnAdd, 0, 2);
+        grid.add(lblSemes, 0, 2);
         grid.add(targeter, 1, 2);
+        grid.add(btnAdd, 0, 3);
         
         grid.setAlignment(Pos.CENTER);
         

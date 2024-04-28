@@ -120,6 +120,7 @@ public class Faculty {
             TextField txtDepartment = new TextField(facultys.facu.getDepartment());
         Label lblPosition = new Label("Position:");
             TextField txtPosition = new TextField(facultys.facu.getPosition());
+        Label lblDropdown = new Label("Pick Faculty: ");
         Button btnAdd = new Button("Submit Edit");
         
         
@@ -152,7 +153,8 @@ public class Faculty {
         grid.add(lblPosition, 0, 6);
         grid.add(txtPosition, 1, 6);
         grid.add(targeter, 1, 7);
-        grid.add(btnAdd, 0, 7);
+        grid.add(lblDropdown, 0, 7);
+        grid.add(btnAdd, 0, 8);
         
         grid.setAlignment(Pos.CENTER);
         

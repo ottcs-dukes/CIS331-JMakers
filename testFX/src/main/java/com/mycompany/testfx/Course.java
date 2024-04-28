@@ -129,7 +129,7 @@ public class Course {
 	TextField txtCredit = new TextField(course.crs.getCreditHours() + "");
 	Label lblSemester = new Label("Semester Taught: ");
 	ComboBox<Semester> cmboSemesters = new ComboBox<>();
-        Label lblCourse = new Label("Courses");
+        Label lblCourse = new Label("Pick Course: ");
 	Button btnAdd = new Button("Submit Edit");
 
 	targeter.setOnAction(f -> {
