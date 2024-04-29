@@ -153,42 +153,42 @@ public class App extends Application {
 			cmboSemesters.getItems().add(sem);
 		}
 
-		ComboBox<Faculty> cmboFaculty = new ComboBox<Faculty>();
-		cmboFaculty.setStyle("-fx-font-family: monospace");
+		ComboBox<Student> cmboStudent = new ComboBox<Student>();
+		cmboStudent.setStyle("-fx-font-family: monospace");
 
-		for (Faculty fac : faculty) {
-			cmboFaculty.getItems().add(fac);
+		for (Student stu : students) {
+			cmboStudent.getItems().add(stu);
 		}
 
 		TextArea textArea = new TextArea();
 
 		var selection = new Object() {
 			Semester sem = null;
-			Faculty fac = null;
+			Student stu = null;
 		};
 
 		cmboSemesters.setOnAction(f -> {
 			selection.sem = cmboSemesters.getSelectionModel().getSelectedItem();
 			textArea.clear();
 			textArea.appendText("Generating Report...\n");
-			if (selection.sem != null && selection.fac != null) {
-				for (Schedule s : schedules) {
-					if (s.getFaculty().equals(selection.fac) && s.getCourse().getSemester().equals(selection.sem)) {
-						textArea.appendText(s.getCourse().toString() + "\n");
+			if (selection.sem != null && selection.stu != null) {
+				for (Enrollment e : enrollments) {
+					if (e.getStudent().equals(selection.stu) && e.getCourse().getSemester().equals(selection.sem)) {
+						textArea.appendText(e.getCourse().toString() + "\n");
 					}
 				}
 			}
 			textArea.appendText("Done.\n");
 		});
 
-		cmboFaculty.setOnAction(f -> {
-			selection.fac = cmboFaculty.getSelectionModel().getSelectedItem();
+		cmboSemesters.setOnAction(f -> {
+			selection.stu = cmboStudent.getSelectionModel().getSelectedItem();
 			textArea.clear();
 			textArea.appendText("Generating Report...\n");
-			if (selection.sem != null && selection.fac != null) {
-				for (Schedule s : schedules) {
-					if (s.getFaculty().equals(selection.fac) && s.getCourse().getSemester().equals(selection.sem)) {
-						textArea.appendText(s.getCourse().toString() + "\n");
+			if (selection.sem != null && selection.stu != null) {
+				for (Enrollment e : enrollments) {
+					if (e.getStudent().equals(selection.stu) && e.getCourse().getSemester().equals(selection.sem)) {
+						textArea.appendText(e.getCourse().toString() + "\n");
 					}
 				}
 			}
@@ -198,7 +198,7 @@ public class App extends Application {
 		GridPane grid = new GridPane();
 
 		grid.add(cmboSemesters, 0, 0);
-		grid.add(cmboFaculty, 1, 0);
+		grid.add(cmboStudent, 1, 0);
 		grid.add(textArea, 0, 1, 2, 1);
 
 		grid.setAlignment(Pos.CENTER);
