@@ -1,10 +1,11 @@
-// GUI Application
+// GUI Application for a University Management System
 // Cooper Ott, Ryan Curran, Ethan Fannon
 
 package com.mycompany.testfx;
 
+// Make all necessary imports for JavaFX 
 import java.util.ArrayList;
-
+// Imports classes from the com.mycompany.testfx package
 import com.mycompany.testfx.SystemInfo;
 import com.mycompany.testfx.Course;
 import com.mycompany.testfx.Enrollment;
@@ -24,7 +25,7 @@ import javafx.stage.Stage;
  * JavaFX App
  */
 public class App extends Application {
-
+        // Declare static ArrayLists to store semesters, students, faculty, courses...
 	private static ArrayList<Semester> semesters;
 	private static ArrayList<Student> students;
 	private static ArrayList<Faculty> faculty;
@@ -32,51 +33,58 @@ public class App extends Application {
 	private static ArrayList<Schedule> schedules;
 	private static ArrayList<Enrollment> enrollments;
 
-	// REPORTS
+	// Generates a Report of Courses in a Semester
 	private static void coursesInSemester() {
-		Stage stage = new Stage();
+		// Create a new stage for report generation
+                Stage stage = new Stage();
+                
+		stage.setTitle("JMakers | Generate Report"); // Sets Box Title 
 
-		stage.setTitle("JMakers | Generate Report");
+		ComboBox<Semester> cmboSemesters = new ComboBox<Semester>(); // Creates a dropdown pulling from Semester Class
+		cmboSemesters.setStyle("-fx-font-family: monospace"); // Set font style
 
-		ComboBox<Semester> cmboSemesters = new ComboBox<Semester>();
-		cmboSemesters.setStyle("-fx-font-family: monospace");
-
-		TextArea textArea = new TextArea();
-
+		TextArea textArea = new TextArea(); // set text area
+                
+                // Populate the dropdown with available semesters
 		for (Semester sem : semesters) {
-			cmboSemesters.getItems().add(sem);
+			cmboSemesters.getItems().add(sem); // Adds the array of semesters
 		}
-
+                
+                // Defines a variable to hold selected semester
 		var semester = new Object() {
 			Semester sem = null;
 		};
+                // Defines an action when a semester is selected from dropdown
 		cmboSemesters.setOnAction(f -> {
 			semester.sem = cmboSemesters.getSelectionModel().getSelectedItem();
 			textArea.clear();
 			textArea.appendText("Generating Report...\n");
-			for (Course c : courses) {
+			for (Course c : courses) { // Display courses for the selected semester in the text area
 				if (c.getSemester().equals(semester.sem)) {
 					textArea.appendText(c.toString() + "\n");
 				}
 			}
 			textArea.appendText("Done.\n");
 		});
-
+                
+                // Create a grid layout for the stage
 		GridPane grid = new GridPane();
-
+                // Adds a dropdown menu and text area to grid layouyt
 		grid.add(cmboSemesters, 0, 0);
 		grid.add(textArea, 0, 1);
 
 		grid.setAlignment(Pos.CENTER);
 
 		Scene scene = new Scene(grid, 300, 200);
-		stage.setScene(scene);
+		stage.setScene(scene); // Set a scene to the stage and display stage
 		stage.show();
 	}
-
+        // Generation Report for Courses Taught by a Faculty Member in a Semester 
 	private static void coursesByFaculty() {
-		Stage stage = new Stage();
-
+		
+                Stage stage = new Stage();
+                
+                
 		stage.setTitle("JMakers | Generate Report");
 
 		ComboBox<Semester> cmboSemesters = new ComboBox<Semester>();
@@ -101,11 +109,13 @@ public class App extends Application {
 		};
 
 		cmboSemesters.setOnAction(f -> {
-			selection.sem = cmboSemesters.getSelectionModel().getSelectedItem();
-			textArea.clear();
+			// get the selected semester
+                        selection.sem = cmboSemesters.getSelectionModel().getSelectedItem();
+			// Clear the text area
+                        textArea.clear();
 			textArea.appendText("Generating Report...\n");
-			if (selection.sem != null && selection.fac != null) {
-				for (Schedule s : schedules) {
+			if (selection.sem != null && selection.fac != null) { // if semester and faculty selections are null
+				for (Schedule s : schedules) { // Displays courses for selected semester and faculty in text area
 					if (s.getFaculty().equals(selection.fac) && s.getCourse().getSemester().equals(selection.sem)) {
 						textArea.appendText(s.getCourse().toString() + "\n");
 					}
@@ -140,7 +150,7 @@ public class App extends Application {
 		stage.setScene(scene);
 		stage.show();
 	}
-
+        // Generation Report for Courses a Student is enrolled in for a Single Semester
 	private static void coursesOfStudent() {
 		Stage stage = new Stage();
 
@@ -207,7 +217,7 @@ public class App extends Application {
 		stage.setScene(scene);
 		stage.show();
 	}
-
+        // Generation Report for Students Enrolled in a Single Course in a Certain Semester
 	private static void studentsInCourse() {
 		Stage stage = new Stage();
 
@@ -249,90 +259,91 @@ public class App extends Application {
 		stage.show();
 	}
 
+        // Main Application Page
 	@Override
 	public void start(Stage stage) {
 		stage.setTitle("JMakers | Main Menu");
 
 		GridPane pane = new GridPane();
 		pane.setAlignment(Pos.CENTER);
-		var scene = new Scene(pane, 640, 480);
+		var scene = new Scene(pane, 640, 480); // Sets the size of the grid for Main App
 
-		Label createLabel = new Label("Create...");
+		Label createLabel = new Label("Create..."); // Create Text
 		createLabel.setMinWidth(300);
 		pane.add(createLabel, 0, 0);
 
-		Button createSemester = new Button("Semester");
+		Button createSemester = new Button("Semester"); // Semester Button
 		createSemester.setMinWidth(300);
 		createSemester.setOnAction(e -> {
 			Semester.create(semesters);
 		});
 		pane.add(createSemester, 0, 1);
 
-		Button createFaculty = new Button("Faculty");
+		Button createFaculty = new Button("Faculty"); // Create Faculty Button
 		createFaculty.setMinWidth(300);
 		createFaculty.setOnAction(e -> {
 			Faculty.create(faculty);
 		});
 		pane.add(createFaculty, 0, 2);
 
-		Button createStudent = new Button("Student");
+		Button createStudent = new Button("Student"); // Create Student Button
 		createStudent.setMinWidth(300);
 		createStudent.setOnAction(e -> {
 			Student.create(students);
 		});
 		pane.add(createStudent, 0, 3);
 
-		Button createCourse = new Button("Course");
+		Button createCourse = new Button("Course"); // Create Course Button
 		createCourse.setMinWidth(300);
 		createCourse.setOnAction(e -> {
 			Course.create(courses, semesters);
 		});
 		pane.add(createCourse, 0, 4);
 
-		Label editLabel = new Label("Edit...");
+		Label editLabel = new Label("Edit..."); // Edit text Label
 		editLabel.setMinWidth(300);
 		pane.add(editLabel, 1, 0);
 
-		Button editSemester = new Button("Semester");
+		Button editSemester = new Button("Semester"); // Edit Semester Button
 		editSemester.setMinWidth(300);
 		editSemester.setOnAction(e -> {
 			Semester.edit(semesters);
 		});
 		pane.add(editSemester, 1, 1);
 
-		Button editFaculty = new Button("Faculty");
+		Button editFaculty = new Button("Faculty"); // Edit Faculty Button
 		editFaculty.setMinWidth(300);
 		editFaculty.setOnAction(e -> {
 			Faculty.edit(faculty);
 		});
 		pane.add(editFaculty, 1, 2);
 
-		Button editStudent = new Button("Student");
+		Button editStudent = new Button("Student"); // Edit Student Button
 		editStudent.setMinWidth(300);
 		editStudent.setOnAction(e -> {
 			Student.edit(students);
 		});
 		pane.add(editStudent, 1, 3);
 
-		Button editCourse = new Button("Course");
+		Button editCourse = new Button("Course"); // Edit Course Button
 		editCourse.setMinWidth(300);
 		editCourse.setOnAction(e -> {
 			Course.edit(courses, semesters);
 		});
 		pane.add(editCourse, 1, 4);
 
-		Label lblAssign = new Label("Assign...");
+		Label lblAssign = new Label("Assign..."); // Assign Text Label
 		lblAssign.setMinWidth(600);
 		pane.add(lblAssign, 0, 5, 2, 1);
 
-		Button btnStuToCourse = new Button("Student to Course");
+		Button btnStuToCourse = new Button("Student to Course"); // Student to Course Button
 		btnStuToCourse.setMinWidth(600);
 		btnStuToCourse.setOnAction(e -> {
 			Enrollment.assign(students, courses, enrollments);
 		});
 		pane.add(btnStuToCourse, 0, 6, 2, 1);
 
-		Button btnFacultyToCourse = new Button("Faculty to Course");
+		Button btnFacultyToCourse = new Button("Faculty to Course"); // Faculty to Course Button
 		btnFacultyToCourse.setMinWidth(600);
 		btnFacultyToCourse.setOnAction(e -> {
 			Schedule.assign(faculty, courses, schedules);
@@ -372,17 +383,18 @@ public class App extends Application {
 		pane.add(btnCAA, 1, 10);
 
 		stage.setScene(scene);
-		stage.show();
+		stage.show(); // Shows the Entire App
 	}
 
 	public static void main(String[] args) {
-		semesters = new ArrayList<Semester>();
+		// Initializes lists to store semesters, students, faculty...
+                semesters = new ArrayList<Semester>(); 
 		students = new ArrayList<Student>();
 		faculty = new ArrayList<Faculty>();
 		courses = new ArrayList<Course>();
 		schedules = new ArrayList<Schedule>();
 		enrollments = new ArrayList<Enrollment>();
-		launch();
+		launch(); // Launches the Application
 	}
 
 }
