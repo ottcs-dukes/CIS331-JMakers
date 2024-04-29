@@ -33,13 +33,10 @@ public class App extends Application {
 	private static ArrayList<Enrollment> enrollments;
 
 	// REPORTS
-	// There should be one/two dropdowns for specifying, and a textarea for printing
-	// out
-
 	private static void coursesInSemester() {
 		Stage stage = new Stage();
 
-		stage.setTitle("Courses Taught in <Semester>");
+		stage.setTitle("JMakers | Generate Report");
 
 		ComboBox<Semester> cmboSemesters = new ComboBox<>();
 		cmboSemesters.setStyle("-fx-font-family: monospace");
@@ -56,12 +53,13 @@ public class App extends Application {
 		cmboSemesters.setOnAction(f -> {
 			semester.sem = cmboSemesters.getSelectionModel().getSelectedItem();
 			textArea.clear();
-			textArea.appendText("Generating Report...");;
+			textArea.appendText("Generating Report...\n");
 			for (Course c : courses) {
 				if (c.getSemester().equals(semester.sem)) {
-					textArea.appendText(c.toString());
+					textArea.appendText(c.toString() + "\n");
 				}
 			}
+			textArea.appendText("Done.\n");
 		});
 
 		GridPane grid = new GridPane();
@@ -79,7 +77,7 @@ public class App extends Application {
 	private static void coursesByFaculty() {
 		Stage stage = new Stage();
 
-		stage.setTitle("Courses Taught by <Faculty> in a <Semester>");
+		stage.setTitle("JMakers | Generate Report");
 
 		ComboBox<Semester> cmboSemesters = new ComboBox<Semester>();
 		cmboSemesters.setStyle("-fx-font-family: monospace");
@@ -87,40 +85,54 @@ public class App extends Application {
 		for (Semester sem : semesters) {
 			cmboSemesters.getItems().add(sem);
 		}
-		cmboSemesters.getSelectionModel().selectFirst();
-		
+
 		ComboBox<Faculty> cmboFaculty = new ComboBox<Faculty>();
 		cmboFaculty.setStyle("-fx-font-family: monospace");
 
 		for (Faculty fac : faculty) {
 			cmboFaculty.getItems().add(fac);
 		}
-		cmboFaculty.getSelectionModel().selectFirst();
-		
+
 		TextArea textArea = new TextArea();
 
 		var selection = new Object() {
-			Semester sem = cmboSemesters.getSelectionModel().getSelectedItem();
-			Faculty fac = cmboFaculty.getSelectionModel().getSelectedItem();
+			Semester sem = null;
+			Faculty fac = null;
 		};
+
 		cmboSemesters.setOnAction(f -> {
 			selection.sem = cmboSemesters.getSelectionModel().getSelectedItem();
-			selection.fac = cmboFaculty.getSelectionModel().getSelectedItem();
 			textArea.clear();
-			for (Schedule s : schedules) {
-				System.out.println(s.toString());
-				if (s.getFaculty().equals(selection.fac) &&
-						s.getCourse().getSemester().equals(selection.sem)) {
-					textArea.appendText(s.getCourse().toString());
+			textArea.appendText("Generating Report...\n");
+			if (selection.sem != null && selection.fac != null) {
+				for (Schedule s : schedules) {
+					if (s.getFaculty().equals(selection.fac) && s.getCourse().getSemester().equals(selection.sem)) {
+						textArea.appendText(s.getCourse().toString() + "\n");
+					}
 				}
 			}
+			textArea.appendText("Done.\n");
+		});
+
+		cmboFaculty.setOnAction(f -> {
+			selection.fac = cmboFaculty.getSelectionModel().getSelectedItem();
+			textArea.clear();
+			textArea.appendText("Generating Report...\n");
+			if (selection.sem != null && selection.fac != null) {
+				for (Schedule s : schedules) {
+					if (s.getFaculty().equals(selection.fac) && s.getCourse().getSemester().equals(selection.sem)) {
+						textArea.appendText(s.getCourse().toString() + "\n");
+					}
+				}
+			}
+			textArea.appendText("Done.\n");
 		});
 
 		GridPane grid = new GridPane();
 
 		grid.add(cmboSemesters, 0, 0);
 		grid.add(cmboFaculty, 1, 0);
-		grid.add(textArea, 0, 1);
+		grid.add(textArea, 0, 1, 2, 1);
 
 		grid.setAlignment(Pos.CENTER);
 
@@ -132,34 +144,62 @@ public class App extends Application {
 	private static void coursesOfStudent() {
 		Stage stage = new Stage();
 
-		stage.setTitle("Courses Taught in <Semester>");
+		stage.setTitle("JMakers | Generate Report");
 
-		ComboBox<Semester> cmboSemesters = new ComboBox<>();
+		ComboBox<Semester> cmboSemesters = new ComboBox<Semester>();
 		cmboSemesters.setStyle("-fx-font-family: monospace");
-
-		TextArea textArea = new TextArea();
 
 		for (Semester sem : semesters) {
 			cmboSemesters.getItems().add(sem);
 		}
 
-		var semester = new Object() {
+		ComboBox<Faculty> cmboFaculty = new ComboBox<Faculty>();
+		cmboFaculty.setStyle("-fx-font-family: monospace");
+
+		for (Faculty fac : faculty) {
+			cmboFaculty.getItems().add(fac);
+		}
+
+		TextArea textArea = new TextArea();
+
+		var selection = new Object() {
 			Semester sem = null;
+			Faculty fac = null;
 		};
+
 		cmboSemesters.setOnAction(f -> {
-			semester.sem = cmboSemesters.getSelectionModel().getSelectedItem();
+			selection.sem = cmboSemesters.getSelectionModel().getSelectedItem();
 			textArea.clear();
-			for (Course c : courses) {
-				if (c.getSemester().equals(semester.sem)) {
-					textArea.appendText(c.toString());
+			textArea.appendText("Generating Report...\n");
+			if (selection.sem != null && selection.fac != null) {
+				for (Schedule s : schedules) {
+					if (s.getFaculty().equals(selection.fac) && s.getCourse().getSemester().equals(selection.sem)) {
+						textArea.appendText(s.getCourse().toString() + "\n");
+					}
 				}
 			}
+			textArea.appendText("Done.\n");
+		});
+
+		cmboFaculty.setOnAction(f -> {
+			selection.fac = cmboFaculty.getSelectionModel().getSelectedItem();
+			textArea.clear();
+			textArea.appendText("Generating Report...\n");
+			if (selection.sem != null && selection.fac != null) {
+				for (Schedule s : schedules) {
+					if (s.getFaculty().equals(selection.fac) && s.getCourse().getSemester().equals(selection.sem)) {
+						textArea.appendText(s.getCourse().toString() + "\n");
+					}
+				}
+			}
+			textArea.appendText("Done.\n");
 		});
 
 		GridPane grid = new GridPane();
 
 		grid.add(cmboSemesters, 0, 0);
-		grid.add(textArea, 0, 1);
+		grid.add(cmboFaculty, 1, 0);
+		grid.add(textArea, 0, 1, 2, 1);
 
 		grid.setAlignment(Pos.CENTER);
 
@@ -171,7 +211,7 @@ public class App extends Application {
 	private static void studentsInCourse() {
 		Stage stage = new Stage();
 
-		stage.setTitle("Students in a <Course>");
+		stage.setTitle("JMakers | Generate Report");
 
 		ComboBox<Semester> cmboSemesters = new ComboBox<>();
 		cmboSemesters.setStyle("-fx-font-family: monospace");
@@ -209,9 +249,6 @@ public class App extends Application {
 
 	@Override
 	public void start(Stage stage) {
-		var javaVersion = SystemInfo.javaVersion();
-		var javafxVersion = SystemInfo.javafxVersion();
-
 		stage.setTitle("JMakers | Main Menu");
 
 		GridPane pane = new GridPane();
@@ -304,29 +341,33 @@ public class App extends Application {
 		lblReport.setMinWidth(600);
 		pane.add(lblReport, 0, 8, 2, 1);
 
-		Button btnCIS = new Button("Courses In Semester");
+		Button btnCIS = new Button("Courses Taught In <Semester>");
 		btnCIS.setMinWidth(300);
 		btnCIS.setOnAction(e -> {
 			coursesInSemester();
 		});
 		pane.add(btnCIS, 0, 9);
 
-		Button btnCTF = new Button("Courses Taught by Faculty in a Semester");
+		Button btnCTF = new Button("Courses Taught by <Faculty>");
 		btnCTF.setMinWidth(300);
 		btnCTF.setOnAction(e -> {
-		    coursesByFaculty();
+			coursesByFaculty();
 		});
-		pane.add(btnCTF, 0, 10);
+		pane.add(btnCTF, 1, 9);
 
-//        Button btnCSS = new Button("Courses a Student is Enrolled in a Semester");
-//	btnCSS.setMinWidth(300);
-//        // set on action CTF
-//        pane.add(btnCSS, 0, 11);
-//        
-//        Button btnCAA = new Button("Students Enrolled in a Course in a Semester");
-//	btnCAA.setMinWidth(300);
-//        // set on action CTF
-//        pane.add(btnCAA, 0, 12);
+		Button btnCSS = new Button("Courses Enrolled by <Student>");
+		btnCSS.setMinWidth(300);
+		btnCSS.setOnAction(e -> {
+			coursesOfStudent();
+		});
+		pane.add(btnCSS, 0, 10);
+
+		Button btnCAA = new Button("Students Enrolled in <Course>");
+		btnCAA.setMinWidth(300);
+		btnCAA.setOnAction(e -> {
+			studentsInCourse();
+		});
+		pane.add(btnCAA, 1, 10);
 
 		stage.setScene(scene);
 		stage.show();
