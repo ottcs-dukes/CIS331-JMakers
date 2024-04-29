@@ -181,7 +181,7 @@ public class App extends Application {
 			textArea.appendText("Done.\n");
 		});
 
-		cmboSemesters.setOnAction(f -> {
+		cmboStudent.setOnAction(f -> {
 			selection.stu = cmboStudent.getSelectionModel().getSelectedItem();
 			textArea.clear();
 			textArea.appendText("Generating Report...\n");
