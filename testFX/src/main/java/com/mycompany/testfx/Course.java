@@ -293,7 +293,7 @@ public class Course {
     }
     
     public String toString() {
-        return prefix + " " + number;
+        return prefix + " " + number + "-" + semester;
     }
     
 }
