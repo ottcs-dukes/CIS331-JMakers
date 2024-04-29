@@ -96,5 +96,10 @@ public class Schedule {
             stage.close();
         });
     }
+    
+    @Override
+    public String toString() {
+    	return this.course.toString() + " by " + this.faculty.toString();
+    }
 
 }

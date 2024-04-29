@@ -25,180 +25,299 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
 
-    private static ArrayList<Semester> semesters;
-    private static ArrayList<Student> students;
-    private static ArrayList<Faculty> faculty;
-    private static ArrayList<Course> courses;
-    private static ArrayList<Schedule> schedules;
-    private static ArrayList<Enrollment> enrollments;
+	private static ArrayList<Semester> semesters;
+	private static ArrayList<Student> students;
+	private static ArrayList<Faculty> faculty;
+	private static ArrayList<Course> courses;
+	private static ArrayList<Schedule> schedules;
+	private static ArrayList<Enrollment> enrollments;
 
-    // REPORTS
-    // There should be one/two dropdowns for specifying, and a textarea for printing
-    // out
+	// REPORTS
+	// There should be one/two dropdowns for specifying, and a textarea for printing
+	// out
 
-    private static void coursesInSemester() {
-	Stage stage = new Stage();
+	private static void coursesInSemester() {
+		Stage stage = new Stage();
 
-	stage.setTitle("Courses Taught in <Semester>");
+		stage.setTitle("Courses Taught in <Semester>");
 
-	ComboBox<Semester> cmboSemesters = new ComboBox<>();
-	cmboSemesters.setStyle("-fx-font-family: monospace");
+		ComboBox<Semester> cmboSemesters = new ComboBox<>();
+		cmboSemesters.setStyle("-fx-font-family: monospace");
 
-	TextArea textArea = new TextArea();
+		TextArea textArea = new TextArea();
 
-	for (Semester sem : semesters) {
-	    cmboSemesters.getItems().add(sem);
+		for (Semester sem : semesters) {
+			cmboSemesters.getItems().add(sem);
+		}
+
+		var semester = new Object() {
+			Semester sem = null;
+		};
+		cmboSemesters.setOnAction(f -> {
+			semester.sem = cmboSemesters.getSelectionModel().getSelectedItem();
+			textArea.clear();
+			textArea.appendText("Generating Report...");;
+			for (Course c : courses) {
+				if (c.getSemester().equals(semester.sem)) {
+					textArea.appendText(c.toString());
+				}
+			}
+		});
+
+		GridPane grid = new GridPane();
+
+		grid.add(cmboSemesters, 0, 0);
+		grid.add(textArea, 0, 1);
+
+		grid.setAlignment(Pos.CENTER);
+
+		Scene scene = new Scene(grid, 300, 200);
+		stage.setScene(scene);
+		stage.show();
 	}
 
-	var semester = new Object() {
-	    Semester sem = null;
-	};
-	cmboSemesters.setOnAction(f -> {
-	    semester.sem = cmboSemesters.getSelectionModel().getSelectedItem();
-	    textArea.clear();
-	    for (Course c : courses) {
-		if (c.getSemester().equals(semester.sem)) {
-		    textArea.appendText(c.toString());
+	private static void coursesByFaculty() {
+		Stage stage = new Stage();
+
+		stage.setTitle("Courses Taught by <Faculty> in a <Semester>");
+
+		ComboBox<Semester> cmboSemesters = new ComboBox<Semester>();
+		cmboSemesters.setStyle("-fx-font-family: monospace");
+
+		for (Semester sem : semesters) {
+			cmboSemesters.getItems().add(sem);
 		}
-	    }
-	});
+		cmboSemesters.getSelectionModel().selectFirst();
+		
+		ComboBox<Faculty> cmboFaculty = new ComboBox<Faculty>();
+		cmboFaculty.setStyle("-fx-font-family: monospace");
 
-	GridPane grid = new GridPane();
+		for (Faculty fac : faculty) {
+			cmboFaculty.getItems().add(fac);
+		}
+		cmboFaculty.getSelectionModel().selectFirst();
+		
+		TextArea textArea = new TextArea();
 
-	grid.add(cmboSemesters, 0, 0);
-	grid.add(textArea, 0, 1);
+		var selection = new Object() {
+			Semester sem = cmboSemesters.getSelectionModel().getSelectedItem();
+			Faculty fac = cmboFaculty.getSelectionModel().getSelectedItem();
+		};
+		cmboSemesters.setOnAction(f -> {
+			selection.sem = cmboSemesters.getSelectionModel().getSelectedItem();
+			selection.fac = cmboFaculty.getSelectionModel().getSelectedItem();
+			textArea.clear();
+			for (Schedule s : schedules) {
+				System.out.println(s.toString());
+				if (s.getFaculty().equals(selection.fac) &&
+						s.getCourse().getSemester().equals(selection.sem)) {
+					textArea.appendText(s.getCourse().toString());
+				}
+			}
+		});
 
-	grid.setAlignment(Pos.CENTER);
+		GridPane grid = new GridPane();
 
-	Scene scene = new Scene(grid, 300, 200);
-	stage.setScene(scene);
-	stage.show();
-    }
+		grid.add(cmboSemesters, 0, 0);
+		grid.add(cmboFaculty, 1, 0);
+		grid.add(textArea, 0, 1);
 
-    private static void coursesByFaculty() {
-        Stage stage = new Stage();
+		grid.setAlignment(Pos.CENTER);
 
-	stage.setTitle("Courses Taught by Faculty in a Semester");
+		Scene scene = new Scene(grid, 300, 200);
+		stage.setScene(scene);
+		stage.show();
+	}
 
-    }
+	private static void coursesOfStudent() {
+		Stage stage = new Stage();
 
-    private static void coursesOfStudent() {
+		stage.setTitle("Courses Taught in <Semester>");
 
-    }
+		ComboBox<Semester> cmboSemesters = new ComboBox<>();
+		cmboSemesters.setStyle("-fx-font-family: monospace");
 
-    private static void studentsInCourse() {
+		TextArea textArea = new TextArea();
 
-    }
+		for (Semester sem : semesters) {
+			cmboSemesters.getItems().add(sem);
+		}
 
-    @Override
-    public void start(Stage stage) {
-	var javaVersion = SystemInfo.javaVersion();
-	var javafxVersion = SystemInfo.javafxVersion();
+		var semester = new Object() {
+			Semester sem = null;
+		};
+		cmboSemesters.setOnAction(f -> {
+			semester.sem = cmboSemesters.getSelectionModel().getSelectedItem();
+			textArea.clear();
+			for (Course c : courses) {
+				if (c.getSemester().equals(semester.sem)) {
+					textArea.appendText(c.toString());
+				}
+			}
+		});
 
-	stage.setTitle("JMakers | Main Menu");
+		GridPane grid = new GridPane();
 
-	GridPane pane = new GridPane();
-	pane.setAlignment(Pos.CENTER);
-	var scene = new Scene(pane, 640, 480);
+		grid.add(cmboSemesters, 0, 0);
+		grid.add(textArea, 0, 1);
 
-	Label createLabel = new Label("Create...");
-	createLabel.setMinWidth(300);
-	pane.add(createLabel, 0, 0);
+		grid.setAlignment(Pos.CENTER);
 
-	Button createSemester = new Button("Semester");
-	createSemester.setMinWidth(300);
-	createSemester.setOnAction(e -> {
-	    Semester.create(semesters);
-	});
-	pane.add(createSemester, 0, 1);
+		Scene scene = new Scene(grid, 300, 200);
+		stage.setScene(scene);
+		stage.show();
+	}
 
-	Button createFaculty = new Button("Faculty");
-	createFaculty.setMinWidth(300);
-	createFaculty.setOnAction(e -> {
-	    Faculty.create(faculty);
-	});
-	pane.add(createFaculty, 0, 2);
+	private static void studentsInCourse() {
+		Stage stage = new Stage();
 
-	Button createStudent = new Button("Student");
-	createStudent.setMinWidth(300);
-	createStudent.setOnAction(e -> {
-	    Student.create(students);
-	});
-	pane.add(createStudent, 0, 3);
+		stage.setTitle("Students in a <Course>");
 
-	Button createCourse = new Button("Course");
-	createCourse.setMinWidth(300);
-	createCourse.setOnAction(e -> {
-	    Course.create(courses, semesters);
-	});
-	pane.add(createCourse, 0, 4);
+		ComboBox<Semester> cmboSemesters = new ComboBox<>();
+		cmboSemesters.setStyle("-fx-font-family: monospace");
 
-	Label editLabel = new Label("Edit...");
-	editLabel.setMinWidth(300);
-	pane.add(editLabel, 1, 0);
+		TextArea textArea = new TextArea();
 
-	Button editSemester = new Button("Semester");
-	editSemester.setMinWidth(300);
-	editSemester.setOnAction(e -> {
-	    Semester.edit(semesters);
-	});
-	pane.add(editSemester, 1, 1);
+		for (Semester sem : semesters) {
+			cmboSemesters.getItems().add(sem);
+		}
 
-	Button editFaculty = new Button("Faculty");
-	editFaculty.setMinWidth(300);
-	editFaculty.setOnAction(e -> {
-	    Faculty.edit(faculty);
-	});
-	pane.add(editFaculty, 1, 2);
+		var semester = new Object() {
+			Semester sem = null;
+		};
+		cmboSemesters.setOnAction(f -> {
+			semester.sem = cmboSemesters.getSelectionModel().getSelectedItem();
+			textArea.clear();
+			for (Course c : courses) {
+				if (c.getSemester().equals(semester.sem)) {
+					textArea.appendText(c.toString());
+				}
+			}
+		});
 
-	Button editStudent = new Button("Student");
-	editStudent.setMinWidth(300);
-	editStudent.setOnAction(e -> {
-	    Student.edit(students);
-	});
-	pane.add(editStudent, 1, 3);
+		GridPane grid = new GridPane();
 
-	Button editCourse = new Button("Course");
-	editCourse.setMinWidth(300);
-	editCourse.setOnAction(e -> {
-	    Course.edit(courses, semesters);
-	});
-	pane.add(editCourse, 1, 4);
+		grid.add(cmboSemesters, 0, 0);
+		grid.add(textArea, 0, 1);
 
-	Label lblAssign = new Label("Assign...");
-	lblAssign.setMinWidth(600);
-	pane.add(lblAssign, 0, 5, 2, 1);
+		grid.setAlignment(Pos.CENTER);
 
-	Button btnStuToCourse = new Button("Student to Course");
-	btnStuToCourse.setMinWidth(600);
-	btnStuToCourse.setOnAction(e -> {
-	    Enrollment.assign(students, courses, enrollments);
-	});
-	pane.add(btnStuToCourse, 0, 6, 2, 1);
+		Scene scene = new Scene(grid, 300, 200);
+		stage.setScene(scene);
+		stage.show();
+	}
 
-	Button btnFacultyToCourse = new Button("Faculty to Course");
-	btnFacultyToCourse.setMinWidth(600);
-	btnFacultyToCourse.setOnAction(e -> {
-            Schedule.assign(faculty, courses, schedules);
-        });
-	pane.add(btnFacultyToCourse, 0, 7, 2, 1);
+	@Override
+	public void start(Stage stage) {
+		var javaVersion = SystemInfo.javaVersion();
+		var javafxVersion = SystemInfo.javafxVersion();
 
-	Label lblReport = new Label("Generate Report");
-	lblReport.setMinWidth(600);
-	pane.add(lblReport, 0, 8, 2, 1);
+		stage.setTitle("JMakers | Main Menu");
 
-	Button btnCIS = new Button("Courses In Semester");
-	btnCIS.setMinWidth(300);
-	btnCIS.setOnAction(e -> {
-	    coursesInSemester();
-	});
-	pane.add(btnCIS, 0, 9);
-        
-        Button btnCTF = new Button("Courses Taught by Faculty in a Semester");
-	btnCTF.setMinWidth(300);
-        // set on action CTF
-        pane.add(btnCTF, 0, 10);
-        
+		GridPane pane = new GridPane();
+		pane.setAlignment(Pos.CENTER);
+		var scene = new Scene(pane, 640, 480);
+
+		Label createLabel = new Label("Create...");
+		createLabel.setMinWidth(300);
+		pane.add(createLabel, 0, 0);
+
+		Button createSemester = new Button("Semester");
+		createSemester.setMinWidth(300);
+		createSemester.setOnAction(e -> {
+			Semester.create(semesters);
+		});
+		pane.add(createSemester, 0, 1);
+
+		Button createFaculty = new Button("Faculty");
+		createFaculty.setMinWidth(300);
+		createFaculty.setOnAction(e -> {
+			Faculty.create(faculty);
+		});
+		pane.add(createFaculty, 0, 2);
+
+		Button createStudent = new Button("Student");
+		createStudent.setMinWidth(300);
+		createStudent.setOnAction(e -> {
+			Student.create(students);
+		});
+		pane.add(createStudent, 0, 3);
+
+		Button createCourse = new Button("Course");
+		createCourse.setMinWidth(300);
+		createCourse.setOnAction(e -> {
+			Course.create(courses, semesters);
+		});
+		pane.add(createCourse, 0, 4);
+
+		Label editLabel = new Label("Edit...");
+		editLabel.setMinWidth(300);
+		pane.add(editLabel, 1, 0);
+
+		Button editSemester = new Button("Semester");
+		editSemester.setMinWidth(300);
+		editSemester.setOnAction(e -> {
+			Semester.edit(semesters);
+		});
+		pane.add(editSemester, 1, 1);
+
+		Button editFaculty = new Button("Faculty");
+		editFaculty.setMinWidth(300);
+		editFaculty.setOnAction(e -> {
+			Faculty.edit(faculty);
+		});
+		pane.add(editFaculty, 1, 2);
+
+		Button editStudent = new Button("Student");
+		editStudent.setMinWidth(300);
+		editStudent.setOnAction(e -> {
+			Student.edit(students);
+		});
+		pane.add(editStudent, 1, 3);
+
+		Button editCourse = new Button("Course");
+		editCourse.setMinWidth(300);
+		editCourse.setOnAction(e -> {
+			Course.edit(courses, semesters);
+		});
+		pane.add(editCourse, 1, 4);
+
+		Label lblAssign = new Label("Assign...");
+		lblAssign.setMinWidth(600);
+		pane.add(lblAssign, 0, 5, 2, 1);
+
+		Button btnStuToCourse = new Button("Student to Course");
+		btnStuToCourse.setMinWidth(600);
+		btnStuToCourse.setOnAction(e -> {
+			Enrollment.assign(students, courses, enrollments);
+		});
+		pane.add(btnStuToCourse, 0, 6, 2, 1);
+
+		Button btnFacultyToCourse = new Button("Faculty to Course");
+		btnFacultyToCourse.setMinWidth(600);
+		btnFacultyToCourse.setOnAction(e -> {
+			Schedule.assign(faculty, courses, schedules);
+		});
+		pane.add(btnFacultyToCourse, 0, 7, 2, 1);
+
+		Label lblReport = new Label("Generate Report");
+		lblReport.setMinWidth(600);
+		pane.add(lblReport, 0, 8, 2, 1);
+
+		Button btnCIS = new Button("Courses In Semester");
+		btnCIS.setMinWidth(300);
+		btnCIS.setOnAction(e -> {
+			coursesInSemester();
+		});
+		pane.add(btnCIS, 0, 9);
+
+		Button btnCTF = new Button("Courses Taught by Faculty in a Semester");
+		btnCTF.setMinWidth(300);
+		btnCTF.setOnAction(e -> {
+		    coursesByFaculty();
+		});
+		pane.add(btnCTF, 0, 10);
+
 //        Button btnCSS = new Button("Courses a Student is Enrolled in a Semester");
 //	btnCSS.setMinWidth(300);
 //        // set on action CTF
@@ -208,20 +327,19 @@ public class App extends Application {
 //	btnCAA.setMinWidth(300);
 //        // set on action CTF
 //        pane.add(btnCAA, 0, 12);
-        
-        
-	stage.setScene(scene);
-	stage.show();
-    }
 
-    public static void main(String[] args) {
-	semesters = new ArrayList<Semester>();
-	students = new ArrayList<Student>();
-	faculty = new ArrayList<Faculty>();
-	courses = new ArrayList<Course>();
-	schedules = new ArrayList<Schedule>();
-	enrollments = new ArrayList<Enrollment>();
-	launch();
-    }
+		stage.setScene(scene);
+		stage.show();
+	}
+
+	public static void main(String[] args) {
+		semesters = new ArrayList<Semester>();
+		students = new ArrayList<Student>();
+		faculty = new ArrayList<Faculty>();
+		courses = new ArrayList<Course>();
+		schedules = new ArrayList<Schedule>();
+		enrollments = new ArrayList<Enrollment>();
+		launch();
+	}
 
 }
