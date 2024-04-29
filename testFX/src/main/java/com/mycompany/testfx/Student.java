@@ -206,7 +206,7 @@ public class Student {
     
     @Override
     public String toString() {
-    	return this.studentID + " - " + this.fullName;
+    	return this.fullName;
     }
 
 }
