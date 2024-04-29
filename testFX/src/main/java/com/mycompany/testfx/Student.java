@@ -50,17 +50,57 @@ public class Student {
         
         grid.setAlignment(Pos.CENTER);
         
+        Stage stagePopUp = new Stage();
+        stagePopUp.setTitle("Error");
+        GridPane gridPopUp = new GridPane();
+        gridPopUp.setAlignment(Pos.CENTER);
+        Label lblPopUp = new Label("");
+        Button btnPopUp = new Button("Close");    
+        gridPopUp.add(lblPopUp, 0, 0);
+        gridPopUp.add(btnPopUp, 0, 1);
+        Scene scenePopUp = new Scene(gridPopUp, 200, 100);
+        stagePopUp.setScene(scenePopUp);
+        
     	// On button click, append new Student() to students
         btnAdd.setOnAction(e -> {
-            String name = txtName.getText();
-            String address = txtAddress.getText();
-            String email = txtEmail.getText();
-            double gpa = Double.valueOf(txtGpa.getText());
-            int ssn = Integer.valueOf(txtSsn.getText());
+            Student stu = null;
+            String name = "";
+            String address = "";
+            String email = "";
+            double gpa = -1;
+            int ssn = -1;
             
-            Student stu = new Student(name, address, email, gpa, ssn);
-            students.add(stu);
-            stage.close();
+            if (txtName.getText().equals("")) {
+                lblPopUp.setText("No entry for Student name");
+                stagePopUp.show();
+            } else if (txtAddress.getText().equals("")) {
+                lblPopUp.setText("No entry for Student address");
+                stagePopUp.show();
+            } else if (txtEmail.getText().equals("")) {
+                lblPopUp.setText("No entry for Student email");
+                stagePopUp.show();
+            } else if (txtGpa.getText().equals("")) {
+                lblPopUp.setText("No entry for Student gpa");
+                stagePopUp.show();
+            } else if (txtSsn.getText().equals("")) {
+                lblPopUp.setText("No entry for Student ssn");
+                stagePopUp.show();
+            } else {
+                name = txtName.getText();
+                address = txtAddress.getText();
+                email= txtEmail.getText();
+                gpa = Double.valueOf(txtGpa.getText());
+                ssn = Integer.valueOf(txtSsn.getText());
+                
+                stu = new Student(name, address, email, gpa, ssn);
+                students.add(stu);
+                stage.close();
+            }
+            
+        });
+        
+        btnPopUp.setOnAction(e -> {
+            stagePopUp.close();
         });
         
         Scene scene = new Scene(grid, 300, 200);
