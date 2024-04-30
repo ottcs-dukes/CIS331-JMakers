@@ -22,6 +22,7 @@ public class Faculty {
     private String position;
     private static int prevFacID = 99;
     
+    // Create Faculty Button Reference
     static void create(ArrayList<Faculty> faculty) {
     	// Create a window
     	// On button click, append new Faculty() to faculty
@@ -29,7 +30,7 @@ public class Faculty {
         
         stage.setTitle("Create Faculty");
 
-        
+        // Set Labels and texts 
         Label lblName = new Label("Full Name:");
             TextField txtName = new TextField();
         Label lblEmail = new Label("Email:");
@@ -48,6 +49,7 @@ public class Faculty {
         
         GridPane grid = new GridPane();
         
+        // Add and organize the labels and texts
         grid.add(lblName , 0, 0);
         grid.add(txtName, 1, 0);
         grid.add(lblEmail, 0, 1);
@@ -66,7 +68,9 @@ public class Faculty {
         
         grid.setAlignment(Pos.CENTER);
         
+        // Define action when the add faculty button is clicked
         btnAdd.setOnAction(e -> {
+            // Get input values from text fields
             String name = txtName.getText();
             String email = txtEmail.getText();
             String building = txtBuilding.getText();
@@ -75,7 +79,9 @@ public class Faculty {
             String department = txtDepartment.getText();
             String position = txtPosition.getText();
             
+            // Create a new Faculty object with input values
             Faculty fac = new Faculty(name, email, building, office, phone, department, position);
+            // Add the new faculty object ot the faculty list
             faculty.add(fac);
             stage.close();
             
@@ -94,18 +100,18 @@ public class Faculty {
     	// On button click, iterate through each field and set each
     	Stage stage = new Stage();
         
-        var facultys = new Object() {Faculty facu = faculties.get(0);};
+        var facultys = new Object() {Faculty facu = faculties.get(0);}; // Define a variable to hold the seleceted faculty
         ComboBox<Faculty> targeter = new ComboBox<Faculty>();
         
         for (Faculty f: faculties) {
-            targeter.getItems().add(f);
+            targeter.getItems().add(f); // Populate the dropdown menu with available faculty
         }
         
         stage.setTitle("Edit Faculty");
         
         
 
-        
+        // Labels and Texts
         Label lblName = new Label("Full Name:");
             TextField txtName = new TextField(facultys.facu.getName());
         Label lblEmail = new Label("Email:");
@@ -123,8 +129,9 @@ public class Faculty {
         Label lblDropdown = new Label("Pick Faculty: ");
         Button btnAdd = new Button("Submit Edit");
         
-        
-        targeter.setOnAction (f -> { 
+        // Define action when a faculty is selected from the dropdown
+        targeter.setOnAction (f -> {
+            // Fill th text fields with selefted facultys data
             facultys.facu = targeter.getSelectionModel().getSelectedItem();
             txtName.setText(facultys.facu.getName());
             txtEmail.setText(facultys.facu.getEmail());
@@ -158,6 +165,7 @@ public class Faculty {
         
         grid.setAlignment(Pos.CENTER);
         
+        // Define action when the submit edit button is clicked
         btnAdd.setOnAction(e -> {
             String name = txtName.getText();
             String email = txtEmail.getText();
@@ -167,7 +175,7 @@ public class Faculty {
             String department = txtDepartment.getText();
             String position = txtPosition.getText();
             
-            
+            // Edit faculty data with input values
             facultys.facu.editFaculty(name, email, building, office, phone, department, position);
             stage.close();
             

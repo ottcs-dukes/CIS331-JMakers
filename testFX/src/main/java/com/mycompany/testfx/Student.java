@@ -17,6 +17,7 @@ public class Student {
     private static int prevStuID = 199;
     private ArrayList<Course> courses = new ArrayList<>();
     
+    // Create a Student
     static void create(ArrayList<Student> students) {
     	// Create a window
         Stage stage = new Stage();
@@ -70,6 +71,7 @@ public class Student {
             double gpa = -1;
             int ssn = -1;
             
+            // Creates a pop up window specifying data needs to filled out - data validation
             if (txtName.getText().equals("")) {
                 lblPopUp.setText("No entry for Student name");
                 stagePopUp.show();
@@ -85,7 +87,7 @@ public class Student {
             } else if (txtSsn.getText().equals("")) {
                 lblPopUp.setText("No entry for Student ssn");
                 stagePopUp.show();
-            } else {
+            } else { // if it isnt blank, then the input is set
                 name = txtName.getText();
                 address = txtAddress.getText();
                 email= txtEmail.getText();
@@ -109,6 +111,7 @@ public class Student {
         
     }
     
+    // Edit Student
     static void edit(ArrayList<Student> students) {
     	
     	// Create a window

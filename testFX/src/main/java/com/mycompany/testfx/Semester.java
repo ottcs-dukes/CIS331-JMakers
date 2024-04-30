@@ -15,6 +15,7 @@ public class Semester {
     private String period;
     private int year;
     
+    // Create a Semester
     static void create(ArrayList<Semester> semesters) {
     	// Create a window
     	// On button click, append new Semester() to semesters
@@ -55,6 +56,7 @@ public class Semester {
         
     }
     
+    // Edit a Semester
     static void edit(ArrayList <Semester> semesters) {
     	// Create a window with data fields filled
     	// On button click, iterate through each field and set each

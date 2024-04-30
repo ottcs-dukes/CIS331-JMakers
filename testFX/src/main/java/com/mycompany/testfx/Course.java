@@ -22,6 +22,7 @@ public class Course {
     private Student[] enrollment;
     private Semester semester;
 
+    // Create a Semester
     static void create(ArrayList<Course> courses, ArrayList<Semester> semesters) {
 	// Create a window
 	// On button click, append new Course() to courses
@@ -100,7 +101,8 @@ public class Course {
 	stage.show();
 
     }
-
+    
+    // Edit a Semester
     static void edit(ArrayList<Course> courses, ArrayList<Semester> semesters) {
 	// Create a window
 	// On button click, append new Course() to courses

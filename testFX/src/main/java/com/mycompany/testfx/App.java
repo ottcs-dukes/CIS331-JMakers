@@ -79,7 +79,7 @@ public class App extends Application {
 		stage.setScene(scene); // Set a scene to the stage and display stage
 		stage.show();
 	}
-        // Generation Report for Courses Taught by a Faculty Member in a Semester 
+        // Generation Report for Courses Taught by a Faculty Member in a Semester
 	private static void coursesByFaculty() {
 		
                 Stage stage = new Stage();
