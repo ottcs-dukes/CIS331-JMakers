@@ -202,7 +202,7 @@ public class Faculty {
         this.position = position;
     
     }
-    
+    // Allows us update the values in faculty
     public void editFaculty(String name, String email, String buildingName,
                         int officeNumber, long phoneNumber, String department, String position) {
         

@@ -111,8 +111,8 @@ public class Course {
 	var course = new Object() {
 	    Course crs = courses.get(0);
 	};
-	ComboBox<Course> targeter = new ComboBox<Course>();
-
+	ComboBox<Course> targeter = new ComboBox<Course>(); // Define a variable
+        // Populates the dropdown menu with available courses
 	for (Course c : courses) {
 	    targeter.getItems().add(c);
 	}
@@ -133,7 +133,9 @@ public class Course {
 	ComboBox<Semester> cmboSemesters = new ComboBox<>();
         Label lblCourse = new Label("Pick Course: ");
 	Button btnAdd = new Button("Submit Edit");
-
+        
+        
+        
 	targeter.setOnAction(f -> {
 	    course.crs = targeter.getSelectionModel().getSelectedItem();
 	    txtName.setText(course.crs.getName());
@@ -142,7 +144,8 @@ public class Course {
 	    txtEnd.setText(course.crs.getEndTime());
 	    txtCredit.setText(course.crs.getCreditHours() + "");
 	});
-
+        
+        // Organizes labels and texts
 	GridPane grid = new GridPane();
 	grid.add(lblName, 0, 2);
 	grid.add(txtName, 1, 2);
@@ -174,7 +177,7 @@ public class Course {
 	cmboSemesters.setOnAction(e -> {
 	    semester.sem = cmboSemesters.getSelectionModel().getSelectedItem();
 	});
-
+        // Inputs the new values into the variables
 	btnAdd.setOnAction(e -> {
 	    String name = txtName.getText();
 	    String[] days = txtDay.getText().split(",");
