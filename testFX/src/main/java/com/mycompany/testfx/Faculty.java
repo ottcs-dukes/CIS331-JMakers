@@ -172,7 +172,7 @@ public class Faculty {
             String email = txtEmail.getText();
             String building = txtBuilding.getText();
             int office = Integer.valueOf(txtOffice.getText());
-            int phone = Integer.valueOf(txtPhone.getText());
+            long phone = Long.valueOf(txtPhone.getText());
             String department = txtDepartment.getText();
             String position = txtPosition.getText();
             
