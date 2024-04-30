@@ -5,14 +5,6 @@ package com.mycompany.testfx;
 
 // Make all necessary imports for JavaFX 
 import java.util.ArrayList;
-// Imports classes from the com.mycompany.testfx package
-import com.mycompany.testfx.SystemInfo;
-import com.mycompany.testfx.Course;
-import com.mycompany.testfx.Enrollment;
-import com.mycompany.testfx.Faculty;
-import com.mycompany.testfx.Schedule;
-import com.mycompany.testfx.Semester;
-import com.mycompany.testfx.Student;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
@@ -260,6 +252,7 @@ public class App extends Application {
 	}
 
         // Main Application Page
+	@SuppressWarnings("exports")
 	@Override
 	public void start(Stage stage) {
 		stage.setTitle("JMakers | Main Menu");

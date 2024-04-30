@@ -106,6 +106,7 @@ public class Faculty {
         for (Faculty f: faculties) {
             targeter.getItems().add(f); // Populate the dropdown menu with available faculty
         }
+        targeter.getSelectionModel().selectFirst();
         
         stage.setTitle("Edit Faculty");
         

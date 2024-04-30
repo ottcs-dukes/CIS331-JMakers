@@ -123,6 +123,7 @@ public class Student {
         for (Student s : students) {
             targeter.getItems().add(s);
         }
+        targeter.getSelectionModel().selectFirst();
         
         stage.setTitle("Edit Student");
         
@@ -179,7 +180,7 @@ public class Student {
 
     public Student(String fullName, String Address, 
                 String email, double gpa, int ssn){
-        this.studentID = studentID;
+        this.studentID = getNewID();
         this.fullName = fullName;
         this.Address = Address;
         this.email = email;

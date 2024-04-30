@@ -68,6 +68,7 @@ public class Semester {
         for (Semester s: semesters) {
             targeter.getItems().add(s);
         }
+        targeter.getSelectionModel().selectFirst();
         
         stage.setTitle("Edit Semester");
 
@@ -84,7 +85,6 @@ public class Semester {
             semester.sem = targeter.getSelectionModel().getSelectedItem();
             txtPeriod.setText(semester.sem.getPeriod());
             txtYear.setText(String.valueOf(semester.sem.getYear()));
-            
         });
         
         
@@ -103,7 +103,6 @@ public class Semester {
         btnAdd.setOnAction(e -> {
             String period = txtPeriod.getText();
             int year = Integer.valueOf(txtYear.getText());
-            
             
             semester.sem.editSemester(period, year);
             stage.close();
