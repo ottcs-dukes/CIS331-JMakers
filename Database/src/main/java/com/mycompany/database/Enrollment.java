@@ -13,10 +13,13 @@ public class Enrollment {
 
     private Course course;
     private Student student;
+    private static int prevEnrollmentID = 599;
+    private int enrollmentID;
 
     public Enrollment(Course course, Student student) {
         this.course = course;
         this.student = student;
+        this.enrollmentID = prevEnrollmentID++;
     }
 
     public Course getCourse() {

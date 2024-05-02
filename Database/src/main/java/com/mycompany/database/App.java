@@ -1,4 +1,4 @@
-// GUI Application for a University Management System
+// GUI Application and Database for a University Management System
 // Cooper Ott, Ryan Curran, Ethan Fannon
 
 package com.mycompany.database;
