@@ -401,26 +401,41 @@ public class App extends Application {
         schedules = new ArrayList<Schedule>();
         enrollments = new ArrayList<Enrollment>();
         try {
-            runDBQuery("SELECT * FROM JAVAUSER.COURSE", 'r');
+            runDBQuery("SELECT * FROM JAVAUSER.SEMESTER", 'r');
             while (jsqlResults.next()) {
-                System.out.println(
-                        jsqlResults.getString(1)
-                        + " "
-                        + jsqlResults.getString(2)
-                        + " "
-                        + jsqlResults.getString(3)
-                        + " "
-                        + jsqlResults.getString(4)
-                        + " "
-                        + jsqlResults.getString(5)
-                        + " "
-                        + jsqlResults.getString(6));
+                semesters.add(new Semester(
+                        jsqlResults.getString(2),
+                        jsqlResults.getInt(3))
+                );
+            }
+            runDBQuery("SELECT * FROM JAVAUSER.FACULTY", 'r');
+            while (jsqlResults.next()) {
+                faculty.add(new Faculty(
+                        jsqlResults.getString(2),
+                        jsqlResults.getString(3),
+                        jsqlResults.getString(4),
+                        jsqlResults.getInt(5),
+                        jsqlResults.getLong(6),
+                        jsqlResults.getString(7),
+                        jsqlResults.getString(8)
+                ));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        System.out.println();
         System.out.println("");
         launch(); // Launches the Application
+    }
+
+    public void stop() {
+        System.out.println("This is running");
+        runDBQuery("DELETE FROM SEMESTER", 'd');
+        for (Semester s : semesters) {
+            String out = "Insert into Semester (periods, years) values ('" + s.getPeriod() + "', " + s.getYear() + ")";
+            System.out.println(out);
+            runDBQuery(out, 'u');
+        }
     }
 
     public static void runDBQuery(String query, char queryType) {
