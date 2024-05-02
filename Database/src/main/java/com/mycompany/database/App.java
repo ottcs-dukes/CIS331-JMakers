@@ -406,7 +406,15 @@ public class App extends Application {
                 System.out.println(
                         jsqlResults.getString(1)
                         + " "
-                        + jsqlResults.getString(2));
+                        + jsqlResults.getString(2)
+                        + " "
+                        + jsqlResults.getString(3)
+                        + " "
+                        + jsqlResults.getString(4)
+                        + " "
+                        + jsqlResults.getString(5)
+                        + " "
+                        + jsqlResults.getString(6));
             }
         } catch (Exception ex) {
             ex.printStackTrace();
