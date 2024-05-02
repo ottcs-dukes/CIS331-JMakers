@@ -15,12 +15,14 @@ public class Course {
 	private String prefix;
 	private int number;
 	private String name;
-	private String[] days;
+	private String days;
 	private String startTime;
 	private String endTime;
 	private int creditHours;
 	private Student[] enrollment;
 	private Semester semester;
+        private static int prevCourseID = 299;
+        private int courseID;
 
 	// Create a Semester
 	static void create(ArrayList<Course> courses, ArrayList<Semester> semesters) {
@@ -86,7 +88,7 @@ public class Course {
 			String prefix = txtPrefix.getText();
 			int number = Integer.valueOf(txtNumber.getText());
 			String name = txtName.getText();
-			String[] days = txtDay.getText().split(", ");
+			String days = txtDay.getText();
 			String start = txtStart.getText();
 			String end = txtEnd.getText();
 			int credit = Integer.valueOf(txtCredit.getText());
@@ -180,7 +182,7 @@ public class Course {
 		// Inputs the new values into the variables
 		btnAdd.setOnAction(e -> {
 			String name = txtName.getText();
-			String[] days = txtDay.getText().split(",");
+			String days = txtDay.getText();
 			String start = txtStart.getText();
 			String end = txtEnd.getText();
 			int credit = Integer.valueOf(txtCredit.getText());
@@ -195,7 +197,7 @@ public class Course {
 
 	}
 
-	public Course(String prefix, int number, String name, String[] days, String startTime, String endTime,
+	public Course(String prefix, int number, String name, String days, String startTime, String endTime,
 			int creditHours, Semester semester) {
 
 		this.prefix = prefix;
@@ -206,9 +208,10 @@ public class Course {
 		this.endTime = endTime;
 		this.creditHours = creditHours;
 		this.semester = semester;
+                this.courseID = prevCourseID++;
 	}
 
-	public void editCourse(String name, String[] days, String startTime, String endTime, int creditHours,
+	public void editCourse(String name, String days, String startTime, String endTime, int creditHours,
 			Semester semester) {
 
 		this.name = name;
@@ -231,7 +234,7 @@ public class Course {
 		return this.name;
 	}
 
-	public String[] getDays() {
+	public String getDays() {
 		return this.days;
 	}
 
@@ -254,6 +257,10 @@ public class Course {
 	public Semester getSemester() {
 		return this.semester;
 	}
+        
+        public int getID() {
+            return this.courseID;
+        }
 
 	public void addStudent(Student stu) {
 		for (int i = 0; i < enrollment.length; i++) {

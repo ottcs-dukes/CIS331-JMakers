@@ -14,6 +14,8 @@ public class Semester {
 
     private String period;
     private int year;
+    private static int prevSemesterID = 499;
+    private int semesterID;
     
     // Create a Semester
     static void create(ArrayList<Semester> semesters) {
@@ -118,6 +120,7 @@ public class Semester {
     public Semester(String period, int year) {
         this.period = period;
         this.year = year;
+        this.semesterID = prevSemesterID++;
     }
 
     public void editSemester(String period, int year) {

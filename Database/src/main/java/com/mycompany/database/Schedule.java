@@ -13,10 +13,17 @@ public class Schedule {
 
     private Course course;
     private Faculty faculty;
+    private static int prevSchedID = 399;
+    private int scheduleID;
 
     public Schedule(Course course, Faculty faculty) {
         this.course = course;
         this.faculty = faculty;
+        this.scheduleID = prevSchedID++;
+    }
+    
+    public int getID() {
+        return this.scheduleID;
     }
 
     public Course getCourse() {
