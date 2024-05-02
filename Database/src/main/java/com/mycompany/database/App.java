@@ -401,5 +401,32 @@ public class App extends Application {
 		enrollments = new ArrayList<Enrollment>();
 		launch(); // Launches the Application
 	}
-
+        
+        public static void runDBQuery(String query, char queryType) {
+        // queryType - Using the C.R.U.D. acronym
+        // 'r' - SELECT
+        // 'c', 'u', or 'd' - UPDATE, INSERT, DELETE
+        
+        try {
+            String URL = "jdbc:oracle:thin:@localhost:1521/XEPDB1";
+            String user = "javauser";
+            String pass = "javapass";
+            
+            oDS = new OracleDataSource();
+            oDS.setURL(URL);
+            
+            jsqlConn = oDS.getConnection(user, pass);
+            jsqlStmt = jsqlConn.prepareStatement(
+                query,
+                ResultSet.TYPE_SCROLL_INSENSITIVE,
+                ResultSet.CONCUR_READ_ONLY);
+            
+            if (queryType == 'r')
+                jsqlResults = jsqlStmt.executeQuery();
+            else
+                jsqlStmt.executeUpdate();
+        } catch (SQLException sqlex) {
+            System.out.println(sqlex.toString());
+        }
+    }
 }
