@@ -3,6 +3,14 @@
 
 package com.mycompany.database;
 
+// database imports
+import java.sql.*;
+import java.util.Scanner;
+import oracle.jdbc.pool.*;
+import oracle.jdbc.*;
+import java.util.*;
+
+
 // Make all necessary imports for JavaFX 
 import java.util.ArrayList;
 
@@ -17,6 +25,10 @@ import javafx.stage.Stage;
  * JavaFX App
  */
 public class App extends Application {
+        public static OracleDataSource oDS;
+        public static Connection jsqlConn;
+        public static PreparedStatement jsqlStmt;
+        public static ResultSet jsqlResults;
         // Declare static ArrayLists to store semesters, students, faculty, courses...
 	private static ArrayList<Semester> semesters;
 	private static ArrayList<Student> students;
