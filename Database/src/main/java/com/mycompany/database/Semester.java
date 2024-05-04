@@ -14,7 +14,7 @@ public class Semester {
 
     private String period;
     private int year;
-    private static int prevSemesterID = 499;
+    private static int prevSemesterID = 1;
     private int semesterID;
     
     // Create a Semester
@@ -122,10 +122,24 @@ public class Semester {
         this.year = year;
         this.semesterID = prevSemesterID++;
     }
+    
+    public Semester(int id, String period, int year) {
+    	
+    	// When loading from database, IDs will already exist. Use them.
+        this.semesterID = id;
+        prevSemesterID = id + 1;
+        
+        this.period = period;
+        this.year = year;
+    }
 
     public void editSemester(String period, int year) {
         this.period = period;
         this.year = year;
+    }
+    
+    public int getID() {
+    	return this.semesterID;
     }
 
     public String getPeriod() {
