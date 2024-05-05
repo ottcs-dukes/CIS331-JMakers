@@ -210,6 +210,20 @@ public class Course {
 		this.semester = semester;
                 this.courseID = prevCourseID++;
 	}
+        
+        public Course(int courseID, String prefix, int number, String name, String days, String startTime, String endTime,
+			int creditHours, Semester semester) {
+
+                this.courseID = courseID;     
+		this.prefix = prefix;
+		this.number = number;
+		this.name = name;
+		this.days = days;
+		this.startTime = startTime;
+		this.endTime = endTime;
+		this.creditHours = creditHours;
+		this.semester = semester;
+	}
 
 	public void editCourse(String name, String days, String startTime, String endTime, int creditHours,
 			Semester semester) {
@@ -304,7 +318,7 @@ public class Course {
 	}
 
 	public String toString() {
-		return prefix + " " + number + "-" + semester;
+		return prefix + " " + number;
 	}
 
 }

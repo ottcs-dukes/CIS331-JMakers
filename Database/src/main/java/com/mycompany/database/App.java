@@ -433,6 +433,19 @@ public class App extends Application {
 						jsqlResults.getInt(6) // ssn
 				));
 			}
+                        runDBQuery("SELECT * FROM JAVAUSER.COURSE", 'r');
+                        while (jsqlResults.next()) {
+                            courses.add(new Course(jsqlResults.getInt(1),   // courseID
+                                                jsqlResults.getString(2),   // prefix
+                                                jsqlResults.getInt(3),      // number
+                                                jsqlResults.getString(4),   // name
+                                                jsqlResults.getString(5),   // days
+                                                jsqlResults.getString(6),   // startTime
+                                                jsqlResults.getString(7),   // endTime
+                                                jsqlResults.getInt(8),      // creditHours
+                                                null
+                            ));
+                        }
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
