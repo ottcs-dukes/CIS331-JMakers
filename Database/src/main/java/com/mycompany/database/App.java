@@ -481,6 +481,20 @@ public class App extends Application {
 							s.getSSN() +				// ssn
 					")", 'u');
 		}
+                runDBQuery("DELETE FROM COURSE", 'd'); // COURSES
+                for (Course c : courses) {
+                    runDBQuery( // run
+                            "INSERT INTO COURSE (courseID, prefixs, courseNum, courseName, days, startTime, endTime, creditHours) VALUES (" + // Set up command
+                                    c.getID() + ", '" +             // courseID
+                                    c.getPrefix() + "', " +          // prefix
+                                    c.getNumber() + ", '" +         // number
+                                    c.getName() + "', '" +          // name
+                                    c.getDays() + "', '" +          // days
+                                    c.getStartTime() + "', '" +     // startTime
+                                    c.getEndTime() + "', " +        // endTime
+                                    c.getCreditHours() +            // creditHours
+                            ")", 'u');
+                }
 	}
 
 	public static void runDBQuery(String query, char queryType) {
