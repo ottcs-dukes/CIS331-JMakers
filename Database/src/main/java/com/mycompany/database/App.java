@@ -458,14 +458,14 @@ public class App extends Application {
 			runDBQuery( // run
 					"Insert into Faculty (facultyID, fullName, email, buildingName, officeNumber, phoneNumber, department, positions) values (" + // Set up command
 							f.getFacultyID() + ", '" + // facultyID
-							f.getName() + "', " + // name
-							f.getEmail() + "', " + // email
+							f.getName() + "', '" + // name
+							f.getEmail() + "', '" + // email
 							f.getBuilding() + "', " + // buildingName
-							f.getOffice() + "', " + // officeNumber
-							f.getPhone() + "', " + // phoneNumber
-							f.getDepartment() + "', " + // department
+							f.getOffice() + ", " + // officeNumber
+							f.getPhone() + ", '" + // phoneNumber
+							f.getDepartment() + "', '" + // department
 							f.getPosition() + // position
-							")",
+							"')",
 					'u');
 		}
 
@@ -474,10 +474,10 @@ public class App extends Application {
 			runDBQuery( // run
 					"Insert into Student (studentID, fullName, Address, email, gpa, ssn) values (" + // Set up command
 							s.getStuID() + ", '" +		// studentID
-							s.getFullName() + ", '" +	// fullName
-							s.getAddress() + ", '" +	// Address
-							s.getEmail() + ", '" +		// email
-							s.getGPA() + ", '" +		// gpa
+							s.getFullName() + "', '" +	// fullName
+							s.getAddress() + "', '" +	// Address
+							s.getEmail() + "', " +		// email
+							s.getGPA() + ", " +		// gpa
 							s.getSSN() +				// ssn
 					")", 'u');
 		}

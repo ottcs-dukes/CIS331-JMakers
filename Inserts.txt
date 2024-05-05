@@ -1,0 +1,11 @@
+Insert into Course (prefixs, coursenum, courseName, days, startTime, endTime, creditHours) Values
+('CS', 246, 'advanced', 'fri sat', '9:00', '10:00', 3);
+
+Insert into student(fullName, address, email, gpa, ssn) values
+('Garrett', '5501 roan', 'gfan', 3.00, 34343);
+
+insert into Semester(periods, years) values
+('Summer', 2019);
+
+Insert into Faculty(fullName, email, buildingName, officenumber, phoneNumber, department, positions) values
+('Holtman', 'hman', 'hartman', 009, 708, 'cis', 'assitant');
