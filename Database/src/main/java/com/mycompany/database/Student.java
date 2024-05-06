@@ -194,7 +194,7 @@ public class Student {
 		
 		// When loading from database, IDs will already exist. Use them.
 		this.studentID = id;
-		prevStuID = id + 1;
+		prevStuID = Math.max(prevStuID, id + 1);
 		
 		this.fullName = fullName;
 		this.Address = Address;

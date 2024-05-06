@@ -126,8 +126,8 @@ public class Semester {
     public Semester(int id, String period, int year) {
     	
     	// When loading from database, IDs will already exist. Use them.
-        this.semesterID = id;
-        prevSemesterID = id + 1;
+		this.semesterID = id;
+		prevSemesterID = Math.max(prevSemesterID, id + 1);
         
         this.period = period;
         this.year = year;

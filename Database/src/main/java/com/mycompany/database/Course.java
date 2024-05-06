@@ -104,7 +104,7 @@ public class Course {
 
 	}
 
-	// Edit a Semester
+	// Edit a Course
 	static void edit(ArrayList<Course> courses, ArrayList<Semester> semesters) {
 		// Create a window
 		// On button click, append new Course() to courses
@@ -133,8 +133,10 @@ public class Course {
 		Label lblCredit = new Label("Credit Hours: ");
 		TextField txtCredit = new TextField(course.crs.getCreditHours() + "");
 		Label lblSemester = new Label("Semester Taught: ");
+                
 		ComboBox<Semester> cmboSemesters = new ComboBox<Semester>();
 		cmboSemesters.setValue(course.crs.getSemester());
+                
 		Label lblCourse = new Label("Pick Course: ");
 		Button btnAdd = new Button("Submit Edit");
 
@@ -174,7 +176,7 @@ public class Course {
 		}
 
 		var semester = new Object() {
-			Semester sem = null;
+			Semester sem = cmboSemesters.getSelectionModel().getSelectedItem();
 		};
 		cmboSemesters.setOnAction(e -> {
 			semester.sem = cmboSemesters.getSelectionModel().getSelectedItem();
@@ -186,7 +188,7 @@ public class Course {
 			String start = txtStart.getText();
 			String end = txtEnd.getText();
 			int credit = Integer.valueOf(txtCredit.getText());
-
+                        
 			course.crs.editCourse(name, days, start, end, credit, semester.sem);
 			stage.close();
 		});
@@ -211,10 +213,12 @@ public class Course {
                 this.courseID = prevCourseID++;
 	}
         
-        public Course(int courseID, String prefix, int number, String name, String days, String startTime, String endTime,
+        public Course(int id, String prefix, int number, String name, String days, String startTime, String endTime,
 			int creditHours, Semester semester) {
 
-                this.courseID = courseID;     
+                this.courseID = id;
+		prevCourseID = Math.max(prevCourseID, id + 1);
+                
 		this.prefix = prefix;
 		this.number = number;
 		this.name = name;

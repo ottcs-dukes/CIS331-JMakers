@@ -205,7 +205,7 @@ public class Faculty {
 
 		// When loading from database, IDs will already exist. Use them.
 		this.facultyID = id;
-		prevFacID = id + 1;
+		prevFacID = Math.max(prevFacID, id + 1);
 		
 		this.name = name;
 		this.email = email;
